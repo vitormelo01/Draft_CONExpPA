@@ -1,0 +1,61 @@
+\documentclass[../Main.tex]{subfiles}
+
+\begin{document}
+
+To estimate the causal effect of dropping nursing home CON laws on expenditure and access to nursing homes/beds in PA, IN, and ND, we use the synthetic control method formally introduced by \citet{abadie2003economic} and \citet{abadie2010synthetic}. The synthetic control method is often used to evaluate the effects of an intervention -- in our case, the dropping of nursing home CON regulations in these three states -- in comparative case studies. Comparative case studies consist of estimating the evolution of aggregate outcomes for a unit affected by a particular occurrence of an event or intervention of interest and comparing it to the evolution of the same aggregates estimated for some control group of unaffected units \citep{abadie2010synthetic}. An important question arises then, regarding which unaffected unit, or units, should be used as a control group to capture what would have happened to the treated unit in the absence of treatment. The idea behind the synthetic control approach is that observed quantifiable characteristics can be used to identify a weighted average of untreated units that provide an appropriate comparison for the treated unit based on pre-treatment characteristics. To more formally express our empirical strategy, we will first provide some notation and a motivating model outlining our approach at estimation using the synthetic control method. We will then discuss our method for conducting inference.
+
+\subsection{Estimation} \label{estimation}
+Following the notation of \citet{abadie2010synthetic}, suppose we observe $J+1$ states. Without loss of generality, let the first state represent the state that dropped nursing home CON regulations (PA, IN, or ND), so that there are $J$ remaining states that had and kept nursing home CON regulations serving as potential controls.\footnote{As potential control states, we use all states that had and kept nursing home CON regulations throughout the entire sample period. In all, there are 35 such states in our pool of potential control states.} Let $Y_{it}^N$ denote the expenditure or access outcome that would be observed for state $i$ at time $t$ with CON laws in place, for all states $i=1,\dots,J+1$, and time periods $t=1,\dots,T$. Suppose the intervention -- the dropping of nursing home CON regulations -- occurs in period $T_0$, then $T_0-1$ is the number of periods before the intervention (the length of the pre-intervention period), with $1\leq T_0-1 \leq T$. In our specific context, PA dropped it's nursing home CON regulations in 1996, IN in 1999, and ND in 1995. Let $Y_{it}^I$ be the expenditure or access outcome that would be observed for state $i$ at time $t$ if state $i$ is exposed to the intervention from period $T_0$ to $T$. We assume that the dropping of nursing home CON regulations in year $T_0$ had no effect on expenditure and access outcomes in the pre-intervention period, so for $t\in \{1,\dots,T_0-1\}$ and all $i\in \{1,\dots,J+1\}$, $Y_{it}^I=Y_{it}^N$.\\
+\indent Let $\alpha_{it}=Y_{it}^I-Y_{it}^N$ denote the effect of dropping nursing home CON laws for state $i$ at time $t$ if state $i$ is exposed to the intervention in periods $T_0, T_0+1, T_0+2,\dots, T$. Note that this effect is allowed to potentially vary over time. Therefore,
+\begin{equation}
+    Y_{it}^I=Y_{it}^N+\alpha_{it} ,
+\end{equation}
+and the observed expenditure or access outcome for state $i$ at time $t$ is 
+\begin{equation}
+    Y_{it}=Y_{it}^N+\alpha_{it}D_{it} ,
+\end{equation}
+where $D_{it}$ is an indicator variable taking on the value of 1 if state $i$ is exposed to the intervention at time $t$ and $0$ otherwise. Because only state $i = 1$ (PA, IN, or ND) is exposed to the intervention and only after period $T_0$, 
+\begin{equation}
+    D_{it}= 
+\begin{cases}
+    1 & \text{if } i=1 \text{ and } t>T_0\\
+    0             & \text{otherwise}
+\end{cases}.
+\end{equation}\\
+\indent The parameters of interest are $\alpha_{1,T_0},\alpha_{1,T_0+1},\dots,\alpha_{1,T}$, which are the post-intervention period-specific effects of dropping nursing home CON regulations on the expenditure or access outcome of interest. For $t\geq T_0$,
+\begin{equation}
+    \alpha_{1t}=Y_{1t}^I-Y_{1t}^N=Y_{1t}-Y_{1t}^N .
+\end{equation}
+Note that $Y_{1t}$ is observed. Therefore, to estimate $\alpha_{1t}$, it is only necessary to come up with an estimate for $Y_{1t}^N$. \citet{abadie2010synthetic} suggest using 
+\begin{equation} \label{eq:year_spec_effect}
+    \hat{\alpha}_{1t}=Y_{1t}-\sum_{j=2}^{J+1}w_j^*Y_{jt} 
+\end{equation}
+for $t\in\{T_0,T_0+1,\dots,T\}$ as an estimator for $\alpha_{1t}$, where $w_j^*$ is the weight given to potential control state $j$. The vector of weights $\mathbf{W} = (w_2,\dots,w_{J+1})$ where $w_j\geq 0$ for $j=2,\dots,J+1$ and $w_2+w_3+\dots+w_{J+1}=1$ is chosen to provide a linear combination of potential control states that best match the treated state based on pre-intervention values of the outcome variable, as well as other pre-intervention characteristics. The pre-intervention variables we use to separately identify the synthetic controls for PA, IN, and ND include the value of the outcome variable in the first half of the pre-intervention years, measures at the state-year level of income per capita, population density, the unemployment rate, the share of income owned by the top one percent, the gini coefficient, as well as state-year demographic characteristics including the proportion of males, the proportion of married individuals, the proportion of white individuals, the proportion of individuals with a bachelor degree or higher, and shares of individuals aged 25 to 44, 45 to 64, and over 65.\\
+\indent By exploiting only the first half of the pre-intervention years to form the synthetic matches using our outcome variables, we are reserving the second half for out-of-sample validation \citep{cavallo2013catastrophic}. If the outcomes continue to match in the second half of the pre-intervention period, then we are more confident in the ability of the synthetic controls to replicate the respective counterfactual trajectories of PA, IN, and ND in the post-intervention treatment period. In our implementation, we match on the average value of each of the above covariates over the entire pre-intervention period, and we match on each year in the first half of the pre-intervention period for the the expenditure and access outcome variables.\footnote{Our expenditure variables are available from 1980 to 2014. We therefore match on these variables in each year from 1980 to 1987 for PA and ND, and 1980 to 1989 for IN, leaving 1988 to 1995, 1988 to 1994, and 1990 to 1998 for validation in PA, ND, and IN, respectively. Data on the quantity of nursing homes and nursing home beds, however, only reliably go back to 1990. We therefore match on these variables in each year from 1991 to 1993 for PA, 1991 to 1992 for ND, and 1991 to 1994 for IN leaving 1994 to 1995, 1993 to 1994, and 1995 to 1998 for validation in PA, ND, and IN, respectively.}\\
+\indent To capture the average effect of dropping nursing home CON regulations in each of the treated states, denoted by $\bar{\alpha}_1$, we average the year-specific estimates of the intervention over the entire treatment period. Thus,
+\begin{equation} \label{eq:ave_effect}
+    \bar{\alpha}_1=\left(\frac{1}{T-T_0}\right)\sum_{t=T_0}^{T}\hat{\alpha}_{1t} ~ .
+\end{equation}
+
+
+
+\subsection{Inference} \label{inference}
+We follow \citet{abadie2010synthetic}, \citet{cavallo2013catastrophic}, and \cite{dube2015pooling} in using exact inferential techniques, similar to permutation tests, to conduct statistical inference. This involves iteratively applying the synthetic control method to every potential control state in the sample. Doing this allows us to assess whether the actual effect estimated for PA, IN, and ND is large relative to the effect estimated for a state chosen at random that is not actually subject to the intervention.\\
+\indent The test statistic we use for our exact inference is the post-to-pre-intervention root mean square prediction error (RMSPE) ratio \citep{abadie2010synthetic}. To calculate this ratio, we first calculate the RMSPE for the post-intervention period for each of the $i = 1$ to $J+1$ states in our sample,
+\begin{equation}
+    RMSPE_i^{post} = \sqrt{\frac{1}{T-T_0+1}\sum_{t=T_0}^T\left(Y_{it}-\sum_{j\neq i}^{J+1}w_j^* Y_{jt}\right)^2}.
+\end{equation}
+We then do the same for the pre-intervention period,
+\begin{equation}
+    RMSPE_i^{pre} = \sqrt{\frac{1}{T_0 - 1}\sum_{t=1}^{T_0 - 1}\left(Y_{it}-\sum_{j\neq i}^{J+1}w_j^* Y_{jt}\right)^2}.
+\end{equation}
+We define our test statistic for each state $i$, denoted by $T_i$, as
+\begin{equation}
+    T_i = \frac{RMSPE_i^{post}}{RMSPE_i^{pre}}.
+\end{equation}
+Intuitively, this test statistic captures how big the estimated effect is in the post-intervention period relative to the fit in the pre-intervention period. Our actual estimated effect would be considered statistically significant if its corresponding test statistic, $T_1$, is in the upper tail of the distribution of placebo test statistics. More specifically, the exact p-value is defined to be the proportion of placebo test statistics that are greater than or equal to the test statistic that corresponds to the treated state. That is,
+\begin{equation}
+    \text{p-value} \equiv \frac{1}{J+1}\sum_{i=1}^{J+1}I\left(T_i \geq T_1 \right).
+\end{equation}
+
+\end{document}

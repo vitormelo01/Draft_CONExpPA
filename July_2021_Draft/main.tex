@@ -1,0 +1,158 @@
+\documentclass[12pt]{article}
+\usepackage{amsmath}
+\usepackage[margin=1in]{geometry}
+\usepackage{graphicx}
+\usepackage{epstopdf}
+\usepackage{setspace}
+\usepackage{amsthm,mathpazo}
+\usepackage{tikz}
+\usepackage{pgfplots}
+\usepackage{verbatim}
+\usepackage{caption}
+\usepackage[round]{natbib}
+%\usepackage{biblatex}
+\usepackage{filecontents}
+\usepackage{enumitem}
+\usepackage{hyperref}
+\bibliographystyle{ecta}
+\usepackage{comment}
+%\usepackage[labelsep=period]{caption}
+%\captionsetup[table]{name=TABLE}
+\usepackage{setspace,graphicx,epstopdf,amsmath,amsfonts,amssymb,amsthm}
+\usepackage{mathtools}
+\usepackage{dcolumn}
+\usepackage{pdflscape}
+\usepackage{lscape}
+\usepackage{rotating}
+\usepackage{xcolor}
+\usepackage{marginnote,enumitem,rotating,fancyvrb}
+\usepackage{hyperref,float}
+
+\usepackage{subcaption}
+\usepackage{caption}
+\usepackage{pgfplots}
+\usepackage{pgfplotstable}
+\pgfplotsset{compat=newest}
+\usetikzlibrary{patterns}
+\pgfkeys{/pgf/number format/.cd,fixed,
+      use period}
+
+\usepackage{xcolor}
+\hypersetup{
+    colorlinks=true,
+    linkcolor={red!50!black},
+    citecolor={blue!50!black},
+    filecolor=blue,      
+    urlcolor={blue!80!black}
+}
+\urlstyle{same}
+
+\renewcommand*\thetable{\arabic{table}}
+%\renewcommand{\thetable}{\Roman{table}}
+\renewcommand*\thefigure{\arabic{figure}}
+
+%\renewcommand{\familydefault}{\rmdefault}
+\usepackage{mathptmx}   %Times New Roman Font
+%\linespread{1.25}   %1.5 spacing
+
+\usepackage{subfiles}
+
+\doublespacing
+
+\graphicspath{{Figures_and_Tables/}}
+
+\begin{document}
+
+\setlist{noitemsep}  % Reduce space between list items (itemize, enumerate, etc.)
+
+\title{\textsc{Is Pennsylvania Paying the Medicaid Bill for Other States? A Synthetic Control Assessment of Nursing Home Certificate-of-Need Laws.}\thanks{We received helpful comments from: . All remaining errors are ours.}\\
+	$~$\\}
+
+\medskip
+
+\author{\textbf{Vitor Melo\protect\thanks{Vitor Melo is a graduate student at Clemson University in the John E. Walker Department of Economics. Email: vmelo@clemson.edu.}} \\ Clemson University
+\and
+\textbf{Elijah Neilson\protect\thanks{Elijah Neilson is an Assistant Professor of Economics at Southern Utah University in the Dixie L. Leavitt School of Business. Email: elijahneilson@suu.edu.}} \\ Southern Utah University
+  	}		
+	%\date{October 27, 2017.}
+
+\date{}              % No date for final submission
+
+% Create title page with no page number
+
+\renewcommand{\thefootnote}{\fnsymbol{footnote}}
+
+\singlespacing
+
+\maketitle
+
+%\vspace{-.2in}
+\begin{abstract}
+\noindent Abstract goes here.
+
+
+
+\bigskip
+			
+			\noindent\emph{JEL Classification: I11, I14, L51} 
+			
+			\bigskip
+			
+			\noindent\emph{Keywords:} 
+\end{abstract}
+
+	\bibliographystyle{aer}
+	
+	\maketitle
+
+\medskip
+
+\thispagestyle{empty}
+
+\clearpage
+
+\onehalfspacing
+\setcounter{footnote}{0}
+\renewcommand{\thefootnote}{\arabic{footnote}}
+\setcounter{page}{1}
+
+\doublespacing
+\setcounter{footnote}{0}
+\renewcommand{\thefootnote}{\arabic{footnote}}
+\setcounter{page}{1}
+
+\doublespacing
+
+\section{Introduction} \label{introduction}
+\subfile{Sections/Introduction}
+
+\section{Policy Background and Literature Review} \label{policy_background}
+\subfile{Sections/Policy_Background}
+
+\section{Data} \label{data}
+\subfile{Sections/Data}
+
+\section{Empirical Strategy} \label{empirical_strategy}
+\subfile{Sections/Empirical_Strategy}
+
+\section{Results} \label{results}
+\subfile{Sections/Results}
+
+\section{Conclusion} \label{conclusion}
+\subfile{Sections/Conclusion}
+
+
+\clearpage
+
+% Bibliography.
+\singlespacing
+\bibliographystyle{ecta}
+\bibliography{References}
+
+\subfile{Sections/Figures}
+
+\newpage 
+\subfile{Sections/Tables}
+
+\end{document}
+
