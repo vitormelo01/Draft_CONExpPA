@@ -54,7 +54,7 @@ We define our test statistic for each state $i$, denoted by $T_i$, as
     T_i = \frac{RMSPE_i^{post}}{RMSPE_i^{pre}}.
 \end{equation}
 Intuitively, this test statistic captures how big the estimated effect is in the post-intervention period relative to the fit in the pre-intervention period. Our actual estimated effect would be considered statistically significant if its corresponding test statistic, $T_1$, is in the upper tail of the distribution of placebo test statistics. More specifically, the exact p-value is defined to be the proportion of placebo test statistics that are greater than or equal to the test statistic that corresponds to the treated state. That is,
-\begin{equation}
+\begin{equation} \label{eq:pvalue}
     \text{p-value} \equiv \frac{1}{J+1}\sum_{i=1}^{J+1}I\left(T_i \geq T_1 \right).
 \end{equation}
 

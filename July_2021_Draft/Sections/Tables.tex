@@ -4,6 +4,59 @@
  
 \begin{document}
 
+\newgeometry{margin=1in}
 
+%\setcounter{table}{0}
+%\renewcommand{\thetable}{A\arabic{table}}
+
+\newpage
+\null
+\vfill
+\begin{table}[htbp]\centering \footnotesize
+\def\sym#1{\ifmmode^{#1}\else\(^{#1}\)\fi}
+\caption{Average Effects of Dropping NH-CON on Expenditure and Access}
+\label{tab:ave_results}
+\setlength{\tabcolsep}{10pt}
+\begin{tabular}{l*{4}{c}}
+\hline\hline
+\\[-2ex]
+&\multicolumn{1}{c}{Total}&\multicolumn{1}{c}{Medicaid}&\multicolumn{1}{c}{Quantity of}&\multicolumn{1}{c}{Quantity of}\\
+&\multicolumn{1}{c}{Expenditure}&\multicolumn{1}{c}{Expenditure}&\multicolumn{1}{c}{Nursing Homes}&\multicolumn{1}{c}{Nursing Home Beds}\\
+&\multicolumn{1}{c}{Per Capita}&\multicolumn{1}{c}{Per Capita}&\multicolumn{1}{c}{Per 100,000}&\multicolumn{1}{c}{Per 100,000}\\
+&\multicolumn{1}{c}{(1)}&\multicolumn{1}{c}{(2)}&\multicolumn{1}{c}{(3)}&\multicolumn{1}{c}{(4)}\\
+\\[-2ex]
+\hline
+\\[-.1ex]
+\multicolumn{5}{l}{\textbf{\textit{Panel A.} Pennsylvania}}\\
+\\[-1.5ex]
+\multicolumn{1}{l}{Average Effect ($\bar{\alpha}_1$)}&   \multicolumn{1}{c}{123.57}&   \multicolumn{1}{c}{104.17}&  \multicolumn{1}{c}{0.37}&   \multicolumn{1}{c}{12.12}\\
+\\[-2ex]
+\multicolumn{1}{l}{\ \ \ \ \ p-value}  &\multicolumn{1}{c}{[0.056]}&\multicolumn{1}{c}{[0.083]}&\multicolumn{1}{c}{[0.083]}&\multicolumn{1}{c}{[0.528]}\\
+\\[-2ex]
+\multicolumn{1}{l}{\ \ \ \ \ Pre-Intervention Average}&   \multicolumn{1}{c}{361.02}&   \multicolumn{1}{c}{145.56}&   \multicolumn{1}{c}{0.63}&   \multicolumn{1}{c}{36.28}\\
+\\[-.1ex]
+\multicolumn{5}{l}{\textbf{\textit{Panel B.} Indiana}}\\
+\\[-1.5ex]
+\multicolumn{1}{l}{Average Effect ($\bar{\alpha}_1$)}&   \multicolumn{1}{c}{-24.65}&   \multicolumn{1}{c}{-21.97}&  \multicolumn{1}{c}{0.28}&   \multicolumn{1}{c}{26.08}\\
+\\[-2ex]
+\multicolumn{1}{l}{\ \ \ \ \ p-value}  &\multicolumn{1}{c}{[0.778]}&\multicolumn{1}{c}{[0.611]}&\multicolumn{1}{c}{[0.028]}&\multicolumn{1}{c}{[0.028]}\\
+\\[-2ex]
+\multicolumn{1}{l}{\ \ \ \ \ Pre-Intervention Average}&   \multicolumn{1}{c}{385.26}&   \multicolumn{1}{c}{129.12}&   \multicolumn{1}{c}{0.63}&   \multicolumn{1}{c}{25.92}\\
+\\[-.1ex]
+\multicolumn{5}{l}{\textbf{\textit{Panel C.} North Dakota}}\\
+\\[-1.5ex]
+\multicolumn{1}{l}{Average Effect ($\bar{\alpha}_1$)}&   \multicolumn{1}{c}{37.72}&   \multicolumn{1}{c}{-77.39}&  \multicolumn{1}{c}{0.21}&   \multicolumn{1}{c}{7.92}\\
+\\[-2ex]
+\multicolumn{1}{l}{\ \ \ \ \ p-value}  &\multicolumn{1}{c}{[0.222]}&\multicolumn{1}{c}{[0.833]}&\multicolumn{1}{c}{[0.472]}&\multicolumn{1}{c}{[0.611]}\\
+\\[-2ex]
+\multicolumn{1}{l}{\ \ \ \ \ Pre-Intervention Average}&   \multicolumn{1}{c}{414.59}&   \multicolumn{1}{c}{140.84}&   \multicolumn{1}{c}{0.078}&   \multicolumn{1}{c}{1.64}\\
+\\[-.1ex]
+\hline\hline
+\\[-2ex]
+\multicolumn{5}{p{.93\linewidth}}{\footnotesize \textit{Notes}: This table reports average annual effects of dropping NH-CON regulations on nursing home expenditure and access ($\bar{\alpha}_1$ from equation (\ref{eq:ave_effect})) in PA, IN, and ND. The p-values are estimated using equation (\ref{eq:pvalue}) following the steps outlined in section \ref{inference}. Also reported are the baseline average values of each outcome variable over the entire pre-intervention period. Data sources: 1980-2014 National Health Expenditure Accounts (NHEA) and 1991-2014 Centers for Medicare and Medicaid Services’ (CMS) Provider of Services files.}
+\end{tabular}
+\end{table}
+\vfill
+\clearpage
 
 \end{document}
