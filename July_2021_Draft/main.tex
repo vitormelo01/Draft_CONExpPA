@@ -33,9 +33,20 @@
 \usepackage{pgfplots}
 \usepackage{pgfplotstable}
 \pgfplotsset{compat=newest}
+\pgfplotsset{compat=newest}
 \usetikzlibrary{patterns}
-\pgfkeys{/pgf/number format/.cd,fixed,
-      use period}
+%\pgfkeys{/pgf/number format/.cd,fixed,'.
+%      use period}
+\usepackage{tikz}
+\usetikzlibrary{patterns,intersections}
+\usetikzlibrary{arrows,calc}
+\tikzset{
+%Define standard arrow tip
+>=stealth',
+%Define style for different line styles
+help lines/.style={dashed, thick},
+axis/.style={<->},
+} 
 
 \usepackage{xcolor}
 \hypersetup{
@@ -99,7 +110,7 @@
 			
 			\bigskip
 			
-			\noindent\emph{Keywords:} 
+			\noindent\emph{Keywords: Nursing Homes, Health  Regulation, Certificate-of-Need. } 
 \end{abstract}
 
 	\bibliographystyle{aer}
