@@ -48,6 +48,9 @@ help lines/.style={dashed, thick},
 axis/.style={<->},
 } 
 
+\usepackage[linesnumbered,ruled]{algorithm2e}
+\DeclareMathOperator*{\argmin}{arg\,min}
+
 \usepackage{xcolor}
 \hypersetup{
     colorlinks=true,
@@ -100,7 +103,7 @@ axis/.style={<->},
 
 %\vspace{-.2in}
 \begin{abstract}
-\noindent Nursing home certificate of need (NH-CON) regulations have been both the most restrictive and most common certificate of need (CON) regulation. This paper analyzes the effect of removing NH-CON regulations on the quantity of nursing homes and nursing home beds, as well as total expenditure and Medicaid expenditure. We argue that NH-CON is unique among CON regulations because individuals in need of nursing home services often substitute towards services in neighboring states. We develop a model where firms compete for a mobile nursing home consumer and show that NH-CON may push some of states’ Medicaid expenditure towards other states. Applying a synthetic control analysis of the repeal of NH-CON in Pennsylvania, Indiana, and North Dakota, we find that removing NH-CON regulations causes an increase in the quantity of nursing homes and beds in all three states. We also find that the repeal of NH-CON led to a substantial and significant increase in total government nursing home expenditure and Medicaid nursing home expenditure in Pennsylvania, but results are insignificant in Indiana or North Dakota. All significant results are consistent with our model.  
+\noindent Nursing home certificate-of-need (NH-CON) regulations have been both the most restrictive and most common certificate-of-need (CON) regulation. This paper analyzes the effect of removing NH-CON regulations on the quantity of nursing homes and nursing home beds, as well as total expenditure and Medicaid expenditure. We argue that NH-CON is unique among CON regulations because individuals in need of nursing home services often move to neighboring states. We develop a model where firms compete for a mobile nursing home consumer and show that NH-CON may push some of states’ Medicaid expenditure towards other states. Applying a synthetic difference in differences analysis of the repeal of NH-CON in Pennsylvania, Indiana, and North Dakota, we find that removing NH-CON regulations causes an increase in the quantity of nursing homes and beds in all three states. We also find that the repeal of NH-CON led to an increase in total government nursing home expenditure and Medicaid nursing home expenditure in Pennsylvania and Indiana, while the effect on North Dakota was insignificant. All significant results are support the predictions of our model.  
 
 
 
@@ -148,7 +151,7 @@ axis/.style={<->},
 \subfile{Sections/Data}
 
 \section{Empirical Strategy} \label{empirical_strategy}
-\subfile{Sections/Empirical_Strategy}
+\subfile{Sections/Empirical_Strategy_SDID}
 
 \section{Results} \label{results}
 \subfile{Sections/Results}

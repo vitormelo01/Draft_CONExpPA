@@ -1,0 +1,325 @@
+\documentclass[12pt]{article}
+\usepackage{amsmath}
+\usepackage[margin=1in]{geometry}
+\usepackage{graphicx}
+\usepackage{epstopdf}
+\usepackage{setspace}
+\usepackage{amsthm,mathpazo}
+\usepackage{tikz}
+\usepackage{pgfplots}
+\usepackage{verbatim}
+\usepackage{caption}
+\usepackage[round]{natbib}
+%\usepackage{biblatex}
+\usepackage{filecontents}
+\usepackage{enumitem}
+\usepackage{hyperref}
+\bibliographystyle{ecta}
+\usepackage{comment}
+%\usepackage[labelsep=period]{caption}
+%\captionsetup[table]{name=TABLE}
+\usepackage{setspace,graphicx,epstopdf,amsmath,amsfonts,amssymb,amsthm}
+\usepackage{mathtools}
+\usepackage{dcolumn}
+\usepackage{pdflscape}
+\usepackage{lscape}
+\usepackage{rotating}
+\usepackage{xcolor}
+\usepackage{marginnote,enumitem,rotating,fancyvrb}
+\usepackage{hyperref,float}
+\newtheorem{Proposition}{Proposition}
+\usepackage{subcaption}
+\usepackage{caption}
+\usepackage{pgfplots}
+\usepackage{pgfplotstable}
+\pgfplotsset{compat=newest}
+\pgfplotsset{compat=newest}
+\usetikzlibrary{patterns}
+%\pgfkeys{/pgf/number format/.cd,fixed,'.
+%      use period}
+\usepackage{tikz}
+\usetikzlibrary{patterns,intersections}
+\usetikzlibrary{arrows,calc}
+\tikzset{
+%Define standard arrow tip
+>=stealth',
+%Define style for different line styles
+help lines/.style={dashed, thick},
+axis/.style={<->},
+} 
+
+\usepackage{xcolor}
+\hypersetup{
+    colorlinks=true,
+    linkcolor={red!50!black},
+    citecolor={blue!50!black},
+    filecolor=blue,      
+    urlcolor={blue!80!black}
+}
+\urlstyle{same}
+
+
+\renewcommand*\thetable{\arabic{table}}
+%\renewcommand{\thetable}{\Roman{table}}
+\renewcommand*\thefigure{\arabic{figure}}
+
+%\renewcommand{\familydefault}{\rmdefault}
+\usepackage{mathptmx}   %Times New Roman Font
+%\linespread{1.25}   %1.5 spacing
+
+\usepackage{subfiles}
+
+\doublespacing
+
+\graphicspath{{Figures_and_Tables/Synth_DID_Analysis/}}
+
+\begin{document}
+
+\setlist{noitemsep}  % Reduce space between list items (itemize, enumerate, etc.)
+
+\title{\textsc{Can States Push Some of Their Medicaid Expenditure to Other States? The Impact of Nursing Home Certificate-of-Need Laws}\thanks{We received helpful comments from: . All remaining errors are ours.}\\
+	$~$\\}
+
+\medskip
+
+\author{\textbf{Vitor Melo\protect\thanks{Vitor Melo is a Ph.D. student at Clemson University in the John E. Walker Department of Economics. Email: vmelo@clemson.edu.}} \\ Clemson University
+\and
+\textbf{Elijah Neilson\protect\thanks{Elijah Neilson is an Assistant Professor of Economics at Southern Utah University in the Dixie L. Leavitt School of Business. Email: elijahneilson@suu.edu.}} \\ Southern Utah University
+  	}		
+	%\date{October 27, 2017.}
+
+\date{}              % No date for final submission
+
+% Create title page with no page number
+
+\renewcommand{\thefootnote}{\fnsymbol{footnote}}
+
+\singlespacing
+
+\maketitle
+
+%\vspace{-.2in}
+\begin{abstract}
+\noindent Nursing home certificate of need (NH-CON) regulations have been both the most restrictive and most common certificate of need (CON) regulation. This paper analyzes the effect of removing NH-CON regulations on the quantity of nursing homes and nursing home beds, as well as total expenditure and Medicaid expenditure. We argue that NH-CON is unique among CON regulations because individuals in need of nursing home services often substitute towards services in neighboring states. We develop a model where firms compete for a mobile nursing home consumer and show that NH-CON may push some of states’ Medicaid expenditure towards other states. Applying a synthetic control analysis of the repeal of NH-CON in Pennsylvania, Indiana, and North Dakota, we find that removing NH-CON regulations causes an increase in the quantity of nursing homes and beds in all three states. We also find that the repeal of NH-CON led to a substantial and significant increase in total government nursing home expenditure and Medicaid nursing home expenditure in Pennsylvania, but results are insignificant in Indiana or North Dakota. All significant results are consistent with our model.  
+
+
+
+\bigskip
+			
+			\noindent\emph{JEL Classification: I11, I14, L51} 
+			
+			\bigskip
+			
+			\noindent\emph{Keywords: Nursing Homes, Health  Regulation, Certificate-of-Need. } 
+\end{abstract}
+
+	\bibliographystyle{aer}
+	
+	\maketitle
+
+\medskip
+
+\thispagestyle{empty}
+
+\clearpage
+
+\onehalfspacing
+\setcounter{footnote}{0}
+\renewcommand{\thefootnote}{\arabic{footnote}}
+\setcounter{page}{1}
+
+\doublespacing
+\setcounter{footnote}{0}
+\renewcommand{\thefootnote}{\arabic{footnote}}
+\setcounter{page}{1}
+
+\doublespacing
+
+\newpage
+\vspace*{8cm}
+\section{Quantity of Nursing Homes Per 100,000}
+\clearpage
+
+\newpage
+\begin{figure}[t]
+	\begin{center}
+	\caption{\centering Parallel Trends and Control State Contribution Plots - Quantity of Nursing Homes Per 100,000 (PA)}
+    \includegraphics[width=\textwidth,keepaspectratio]{q_nursing_homes_plots_PA.pdf}
+    \end{center}
+    \footnotesize
+		\textit{Notes}:
+\end{figure}
+\clearpage
+
+\newpage
+\begin{figure}[t]
+	\begin{center}
+	\caption{\centering Parallel Trends and Control State Contribution Plots - Quantity of Nursing Homes Per 100,000 (IN)}
+    \includegraphics[width=\textwidth,keepaspectratio]{q_nursing_homes_plots_IN.pdf}
+    \end{center}
+    \footnotesize
+		\textit{Notes}:
+\end{figure}
+\clearpage
+
+\newpage
+\begin{figure}[t]
+	\begin{center}
+	\caption{\centering Parallel Trends and Control State Contribution Plots - Quantity of Nursing Homes Per 100,000 (ND)}
+    \includegraphics[width=\textwidth,keepaspectratio]{q_nursing_homes_plots_ND.pdf}
+    \end{center}
+    \footnotesize
+		\textit{Notes}:
+\end{figure}
+\clearpage
+
+\newpage
+\input{Figures_and_Tables/Synth_DID_Analysis/q_nursing_homes_estimates_PA.tex}
+\input{Figures_and_Tables/Synth_DID_Analysis/q_nursing_homes_estimates_IN.tex}
+\input{Figures_and_Tables/Synth_DID_Analysis/q_nursing_homes_estimates_ND.tex}
+\clearpage
+
+
+
+
+
+
+\newpage
+\vspace*{8cm}
+\section{Quantity of Nursing Home Beds Per 100,000}
+\clearpage
+
+\newpage
+\begin{figure}[t]
+	\begin{center}
+	\caption{\centering Parallel Trends and Control State Contribution Plots - Quantity of Nursing Home Beds Per 100,000 (PA)}
+    \includegraphics[width=\textwidth,keepaspectratio]{q_nursing_home_beds_plots_PA.pdf}
+    \end{center}
+    \footnotesize
+		\textit{Notes}:
+\end{figure}
+\clearpage
+
+\newpage
+\begin{figure}[t]
+	\begin{center}
+	\caption{\centering Parallel Trends and Control State Contribution Plots - Quantity of Nursing Home Beds Per 100,000 (IN)}
+    \includegraphics[width=\textwidth,keepaspectratio]{q_nursing_home_beds_plots_IN.pdf}
+    \end{center}
+    \footnotesize
+		\textit{Notes}:
+\end{figure}
+\clearpage
+
+\newpage
+\begin{figure}[t]
+	\begin{center}
+	\caption{\centering Parallel Trends and Control State Contribution Plots - Quantity of Nursing Home Beds Per 100,000 (ND)}
+    \includegraphics[width=\textwidth,keepaspectratio]{q_nursing_home_beds_plots_ND.pdf}
+    \end{center}
+    \footnotesize
+		\textit{Notes}:
+\end{figure}
+\clearpage
+
+\newpage
+\input{Figures_and_Tables/Synth_DID_Analysis/q_nursing_home_beds_estimates_PA.tex}
+\input{Figures_and_Tables/Synth_DID_Analysis/q_nursing_home_beds_estimates_IN.tex}
+\input{Figures_and_Tables/Synth_DID_Analysis/q_nursing_home_beds_estimates_ND.tex}
+\clearpage
+
+
+
+
+
+\newpage
+\vspace*{8cm}
+\section{Total Expenditure}
+\clearpage
+
+\newpage
+\begin{figure}[t]
+	\begin{center}
+	\caption{\centering Parallel Trends and Control State Contribution Plots - Total Expenditure (PA)}
+    \includegraphics[width=\textwidth,keepaspectratio]{total_expenditure_plots_PA.pdf}
+    \end{center}
+    \footnotesize
+		\textit{Notes}:
+\end{figure}
+\clearpage
+
+\newpage
+\begin{figure}[t]
+	\begin{center}
+	\caption{\centering Parallel Trends and Control State Contribution Plots - Total Expenditure (IN)}
+    \includegraphics[width=\textwidth,keepaspectratio]{total_expenditure_plots_IN.pdf}
+    \end{center}
+    \footnotesize
+		\textit{Notes}:
+\end{figure}
+\clearpage
+
+\newpage
+\begin{figure}[t]
+	\begin{center}
+	\caption{\centering Parallel Trends and Control State Contribution Plots - Total Expenditure (ND)}
+    \includegraphics[width=\textwidth,keepaspectratio]{total_expenditure_plots_ND.pdf}
+    \end{center}
+    \footnotesize
+		\textit{Notes}:
+\end{figure}
+\clearpage
+
+\newpage
+\input{Figures_and_Tables/Synth_DID_Analysis/total_expenditure_estimates_PA.tex}
+\input{Figures_and_Tables/Synth_DID_Analysis/total_expenditure_estimates_IN.tex}
+\input{Figures_and_Tables/Synth_DID_Analysis/total_expenditure_estimates_ND.tex}
+\clearpage
+
+
+
+\newpage
+\vspace*{8cm}
+\section{Medicaid Expenditure}
+\clearpage
+
+\newpage
+\begin{figure}[t]
+	\begin{center}
+	\caption{\centering Parallel Trends and Control State Contribution Plots - Medicaid Expenditure (PA)}
+    \includegraphics[width=\textwidth,keepaspectratio]{medicaid_expenditure_plots_PA.pdf}
+    \end{center}
+    \footnotesize
+		\textit{Notes}:
+\end{figure}
+\clearpage
+
+\newpage
+\begin{figure}[t]
+	\begin{center}
+	\caption{\centering Parallel Trends and Control State Contribution Plots - Medicaid Expenditure (IN)}
+    \includegraphics[width=\textwidth,keepaspectratio]{medicaid_expenditure_plots_IN.pdf}
+    \end{center}
+    \footnotesize
+		\textit{Notes}:
+\end{figure}
+\clearpage
+
+\newpage
+\begin{figure}[t]
+	\begin{center}
+	\caption{\centering Parallel Trends and Control State Contribution Plots - Medicaid Expenditure (ND)}
+    \includegraphics[width=\textwidth,keepaspectratio]{medicaid_expenditure_plots_ND.pdf}
+    \end{center}
+    \footnotesize
+		\textit{Notes}:
+\end{figure}
+\clearpage
+
+\newpage
+\input{Figures_and_Tables/Synth_DID_Analysis/medicaid_expenditure_estimates_PA.tex}
+\input{Figures_and_Tables/Synth_DID_Analysis/medicaid_expenditure_estimates_IN.tex}
+\input{Figures_and_Tables/Synth_DID_Analysis/medicaid_expenditure_estimates_ND.tex}
+\clearpage
+
+\end{document}

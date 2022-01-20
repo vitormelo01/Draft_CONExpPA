@@ -1,0 +1,127 @@
+\documentclass[../Main.tex]{subfiles}
+
+\begin{document}
+
+To estimate the causal effect of repealing nursing home CON regulations on expenditure and access to nursing homes/beds in PA, IN, and ND, we use the synthetic difference in differences (SDID) estimator introduced by \citet{arkhangelsky2021synthetic}. The SDID estimator builds on the insights behind the widely used difference-in-differences (DID) and synthetic control (SC) methods \citep{abadie2003economic,abadie2010synthetic,currie2020technology}, and is argued by \citet{arkhangelsky2021synthetic} to perform well in settings such as ours, where these conventional estimators are commonly used. Moreover, the SDID estimator is shown to have desirable robustness properties both theoretically and empirically relative to these conventional estimators \citep{arkhangelsky2021synthetic}. Like SC, the SDID method reweights and matches pre-exposure trends in order to weaken the reliance on parallel trend type assumptions. SDID also includes time weights that lessen the role of time periods that are very different from the posttreatment periods. Like DID, the SDID method is invariant to additive unit-level shifts, and when appropriate, allows for valid large-panel inference. To more formally express our empirical strategy, we will first provide some notation and a motivating model outlining estimation of SDID, and how it compares to the DID and SC estimators, as outlined in \citet{arkhangelsky2021synthetic}. We will then discuss our method for conducting inference.
+
+\subsection{SDID Estimation} \label{sdid_estimation}
+
+Following the notation and procedure of \citet{arkhangelsky2021synthetic}, consider a balanced panel with $N$ states and $T$ time periods, where the nursing home access or expenditure outcome for state $i$ in period $t$ is denoted by $Y_{it}$, and exposure to the binary treatment/intervention -- the dropping of NH-CON regulations -- is denoted by $W_{it} \in \{0,1\}$. Suppose further that the first $N_{co}$ (control) states are never exposed to the treatment, while the last $N_{tr}=N-N_{co}$ (treated) states are exposed after time period $T_{pre}$. In our study, PA, IN, and ND are treated states that drop NH-CON in 1996, 1999, and 1995, respectively. To assess potential heterogeneous treatment effects across these treated states, we apply the SDID method for each state separately, such that $N_{tr}=1$ in each case. As potential control states, in each case we use all states that had and kept NH-CON regulations throughout the entire sample period. In all, there are $N_{co}=35$ such states in our pool of potential control states. Figure \ref{fig:nh_con_map} shows which states did and did not have NH-CON during our sample period.\footnote{Connecticut and Louisiana are not included as potential controls because they adopted NH-CON during our sample period.}
+
+Similar to SC methods, we start by finding weights $\hat{\omega}^{sdid}$ that align pre-exposure trends in the outcome of our unexposed states with those for the exposed state. We also look for time weights $\hat{\lambda}^{sdid}$ that balance pre-exposure time periods with post-exposure time periods. Then we use these weights in a basic two-way fixed effects regression to estimate the average causal effect of exposure, denoted by $\tau$,
+\begin{equation} \label{eq:sdid_reg}
+    \left(\hat{\tau}^{sdid},\hat{\mu},\hat{\alpha},\hat{\beta}\right)=\argmin_{\tau,\mu,\alpha,\beta}\left\{\sum_{i=1}^N\sum_{t=1}^T\left(Y_{it}-\mu-\alpha_i-\beta_t-W_{it}\tau\right)^2\hat{\omega}_i^{sdid}\hat{\lambda}_t^{sdid}\right\}.
+\end{equation}
+
+More specifically, the unit weights $\hat{\omega}^{sdid}$ are chosen by solving the optimization problem
+\begin{equation} \label{eq:unit_weights}
+    \left(\hat{\omega}_0,\hat{\omega}^{sdid}\right)=\argmin_{\omega_0\in\mathbb{R},\omega\in\Omega}\ell_{unit}\left(\omega_0,\omega\right),
+\end{equation}
+where
+\begin{equation*}
+    \ell_{unit}\left(\omega_0,\omega\right)=\sum_{t=1}^{T_{pre}}\left(\omega_0+\sum_{i=1}^{N_{co}}\omega_iY_{it}-\frac{1}{N_{tr}}\sum_{i=N_{co}+1}^NY_{it}\right)^2+\zeta^2T_{pre}\lVert\omega\rVert_2^2,
+\end{equation*}
+\begin{equation*}
+    \Omega=\left\{\omega\in\mathbb{R}_+^N:\sum_{i=1}^{N_{co}}\omega_i=1,\omega_i=N_{tr}^{-1} ~~ \text{for all} ~~ i=N_{co}+1,\dots ,N \right\},
+\end{equation*}
+and where $\mathb{R}_+$ denotes the positive real line. The regularization parameter $\zeta$ is set as
+\begin{equation} \label{eq:regularization}
+    \zeta=\left(N_{tr}T_{post}\right)^{1/4}\hat{\sigma}\qquad \text{with} \qquad \hat{\sigma}^2=\frac{1}{N_{co}(T_{pre}-1)}\sum_{i=1}^{N_{co}}\sum_{t=1}^{T_{pre}-1}\left(\Delta_{it}-\bar{\Delta}\right)^2,
+\end{equation}
+where
+\begin{equation*}
+    \Delta_{it}=Y_{i(t+1)}-Y_{it},\qquad \text{and} \qquad \bar{\Delta}=\frac{1}{N_{co}(T_{pre}-1)}\sum_{i=1}^{N_{co}}\sum_{t=1}^{T_{pre}-1}\Delta_{it}.
+\end{equation*}
+In other words, the unit weights are chosen to find a convex combination of potential control states whose pre-treatment trend in the outcome variable of interest is most parallel to that of the treated state. The regularization parameter $\zeta$ is included to increase the dispersion of the weights, and to ensure their uniqueness, and is chosen to match the size of a typical one-period outcome change $\Delta_{it}$ for unexposed states in the pre-period, multiplied by a theoretically motivated scaling $(N_{tr}T_{post})^{1/4}$.
+
+Similarly, the time weights $\hat{\lambda}^{sdid}$ are chosen by solving the optimization problem
+\begin{equation} \label{eq:time_weights}
+    \left(\hat{\lambda}_0,\hat{\lambda}^{sdid}\right)=\argmin_{\lambda_0\in\mathbb{R},\lambda\in\Lambda}\ell_{time}\left(\lambda_0,\lambda\right),
+\end{equation}
+where
+\begin{equation*}
+    \ell_{time}\left(\lambda_0,\lambda\right)=\sum_{i=1}^{N_{co}}\left(\lambda_0+\sum_{t=1}^{T_{pre}}\lambda_tY_{it}-\frac{1}{T_{post}}\sum_{t=T_{pre}+1}^TY_{it}\right)^2,
+\end{equation*}
+\begin{equation*}
+    \Lambda=\left\{\lambda\in\mathbb{R}_+^T:\sum_{t=1}^{T_{pre}}\lambda_t=1,\lambda_t=T_{post}^{-1} ~~ \text{for all} ~~ t=T_{pre}+1,\dots ,T \right\}.
+\end{equation*}
+As explained and justified in \citet{arkhangelsky2021synthetic}, the main difference between (\ref{eq:unit_weights}) and (\ref{eq:time_weights}) is that regulation is used for the former but not the latter.
+
+To summarize, Algorithm \ref{alg:one} outlines the procedure for estimating $\hat{\tau}^{sdid}$.
+\vspace{.25cm}
+\begin{center}
+\begin{algorithm}[H]
+\setstretch{.8}
+\caption{SDID Estimation}\label{alg:one}
+\KwData{$\mathbf{Y},\mathbf{W}$}
+\KwResult{Point estimate $\hat{\tau}^{sdid}$ }
+Compute the regularization parameter $\zeta$ using (\ref{eq:regularization})\;
+Compute unit weights $\hat{\omega}^{sdid}$ via (\ref{eq:unit_weights})\;
+Compute time weights $\hat{\lambda}^{sdid}$ via (\ref{eq:time_weights})\;
+Compute the SDID estimator via the weighted DID regression
+\begin{equation*}
+    \left(\hat{\tau}^{sdid},\hat{\mu},\hat{\alpha},\hat{\beta}\right)=\argmin_{\tau,\mu,\alpha,\beta}\left\{\sum_{i=1}^N\sum_{t=1}^T\left(Y_{it}-\mu-\alpha_i-\beta_t-W_{it}\tau\right)^2\hat{\omega}_i^{sdid}\hat{\lambda}_t^{sdid}\right\}\;
+\end{equation*}
+\end{algorithm}
+\end{center}
+$~$\\
+\indent In our application, we also include time-varying covariates $X_{it}$. As noted in \citet{arkhangelsky2021synthetic}, we incorporate adjustment for these covariates by applying the SDID, DID, and SC methods to the residuals $Y_{it}^{res}=Y_{it}-X_{it}\hat{\gamma}$ of the regression of $Y_{it}$ on $X_{it}$. Our vector of time-varying covariates includes measures at the state-year level of income per capita, population density, the unemployment rate, the share of income owned by the top one percent, the gini coefficient, as well as state-year demographic characteristics including the proportion of males, the proportion of married individuals, the proportion of white individuals, the proportion of individuals with a bachelor degree or higher, and shares of individuals aged 25 to 44, 45 to 64, and over 65.
+
+\subsection{Comparison to DID and SC}
+
+In comparison to the SDID estimator, DID estimates the effect of the treatment by solving the same two-way fixed effects regression problem, but without either time or unit weights:
+\begin{equation} \label{eq:did_reg}
+    \left(\hat{\tau}^{did},\hat{\mu},\hat{\alpha},\hat{\beta}\right)=\argmin_{\tau,\mu,\alpha,\beta}\left\{\sum_{i=1}^N\sum_{t=1}^T\left(Y_{it}-\mu-\alpha_i-\beta_t-W_{it}\tau\right)^2\right\}.
+\end{equation}
+As noted above, the unit weights included in SDID are designed so that the pre-treatment trend in the outcome for the treated state is approximately parallel to the weighted average for control states. Similarly, the time weights are designed so that the average post-treatment outcome for each of the control states differs by a constant from the weighted average of the pre-treatment outcomes for the same control states. Using only similar states and similar periods makes the SDID estimator relatively more robust. For example, since we are interested in estimating the effect of dropping NH-CON on nursing home access and expenditure in PA, IN, and ND, it makes sense to emphasize states that are similar to PA, IN, and ND relative to states that are not. Relative to the DID estimator, reweighting and matching weakens the reliance of SDID on parallel trend type assumptions.
+
+The SC estimator can be expressed in a similar way, except that relative to the SDID estimator, SC omits the unit fixed effect and the time weights from the regression function:
+\begin{equation} \label{eq:sc_reg}
+    \left(\hat{\tau}^{sc},\hat{\mu},\hat{\beta}\right)=\argmin_{\tau,\mu,\beta}\left\{\sum_{i=1}^N\sum_{t=1}^T\left(Y_{it}-\mu-\beta_t-W_{it}\tau\right)^2\hat{\omega}_i^{sc}\right\}.
+\end{equation}
+The SC weights $\hat{\omega}^{sc}$ are closely related to the SDID weights $\hat{\omega}^{sdid}$, with two exceptions. First, SDID allows for the inclusion of an intercept term $\omega_0$. Importantly, this means that the SDID weights do not need to be chosen to make the control states' pre-trends perfectly match the treated state's pre-trends. Rather, it is sufficient that the weights make the trends parallel.\footnote{The reason SDID is able to allow for this extra flexibility in the choice of weights is that the use of fixed effects $\alpha_i$ absorb any constant differences between different states \citep{arkhangelsky2021synthetic}.} Second, as noted before, SDID includes a regularization penalty to increase the dispersion of the weights and to ensure that they are unique.\footnote{If we were to set $\zeta=0$ and omit the intercept $\omega_0$, then $\hat{\omega}^{sdid}$ would equal $\hat{\omega}^{sc}$, corresponding exactly to a choice of unit weights discussed in \citet{abadie2010synthetic} in the case where $N_{tr}=1$.}
+
+To help facilitate more direct comparisons between $\hat{\tau}^{sdid}$, $\hat{\tau}^{did}$, and $\hat{\tau}^{sc}$, \citet{arkhangelsky2021synthetic} point out that each of these three estimators can be rewritten as a weighted average difference in adjusted outcomes (denoted by $\hat{\delta}_i$) for appropriate sample weights $\hat{\omega}_i$:
+\begin{equation}
+    \hat{\tau}=\hat{\delta}_{tr}-\sum_{i=1}^{N_{co}}\hat{\omega}_i\hat{\delta}_i.
+\end{equation}
+DID uses constant unit weights $\hat{\omega}_i^{did}=\frac{1}{N_{co}}$, and the construction of $\hat{\omega}_i^{sdid}$ and $\hat{\omega}_i^{sc}$ was described in Section \ref{sdid_estimation} and the previous paragraph. For each estimator then, the adjusted outcomes $\hat{\delta}_i$ can be expressed as
+\begin{equation}
+    \hat{\delta}_i^{sc}=\frac{1}{T_{post}}\sum_{t=T_{pre}+1}^TY_{it},
+\end{equation}
+\begin{equation}
+    \hat{\delta}_i^{did}=\frac{1}{T_{post}}\sum_{t=T_{pre}+1}^TY_{it} - \frac{1}{T_{pre}}\sum_{t=1}^{T_{pre}}Y_{it},
+\end{equation}
+\begin{equation}
+    \hat{\delta}_i^{sdid}=\frac{1}{T_{post}}\sum_{t=T_{pre}+1}^TY_{it} - \sum_{t=1}^{T_{pre}}\hat{\lambda}_t^{sdid}Y_{it},
+\end{equation}
+
+\subsection{inference}
+To conduct statistical inference, we implement the ``placebo variance estimation'' approach in \citet{arkhangelsky2021synthetic}, which is motivated by placebo evaluations often considered in the literature on SCs \citep{abadie2010synthetic,abadie2015comparative}, and which can be applied when $N_{tr}=1$. The main idea of these placebo evaluations is to consider the behavior of $\hat{\tau}^{sdid}$, $\hat{\tau}^{did}$, or $\hat{\tau}^{sc}$ when we replace the states that were actually exposed to the treatment with different states that were not exposed. Essentially, we use placebo predictions based only on the un-treated states to estimate the noise level, and then use that to get a measure of the asymptotic variance (denoted by $\hat{V}_{\tau}$). Algorithm \ref{alg:two} outlines the procedure for estimating $\hat{V}_{\tau}$.\footnote{Recall that in our context, $N_{tr}=1$, and therefore $B=N_{co}$ such that we implement SDID, DID, and SC for each of the $N_{co}$ control states individually, in the same way we did with PA, IN, and ND.}
+\vspace{.25cm}
+\begin{center}
+\begin{algorithm}[H]
+\setstretch{.8}
+\caption{Placebo Variance Estimation}\label{alg:two}
+\KwData{$\mathbf{Y}_{co,\cdot},~N_{tr},~B$}
+\KwResult{Variance estimator $\hat{V}_{\tau}$ }
+\For{$b\leftarrow 1$ \KwTo $B$}{
+    Sample $N_{tr}$ out of the $N_{co}$ control units without replacement to `receive the placebo'\;
+    Construct a placebo treatment matrix $\mathbf{W}_{co,\cdot}^{(b)}$ for the controls \;
+    Compute the SDID, SC, or DID estimator $\hat{\tau}^{(b)}$ based on $(\mathbf{Y}_{co,\cdot},\mathbf{W}_{co,\cdot}^{(b)})$\;
+}
+Define $\hat{V}_{\tau}=\frac{1}{B}\sum_{b=1}^B\left(\hat{\tau}^{(b)}-\frac{1}{B}\sum_{b=1}^B\hat{\tau}^{(b)}\right)^2$
+\end{algorithm}
+\end{center}
+$~$\\
+\indent With $\hat{V}_{\tau}$, we report standard errors (equal to $\sqrt{\hat{V}_{\tau}}$) and confidence intervals defined conventionally by
+\begin{equation}
+    \tau \in \hat{\tau} \pm z_{\alpha/2}\sqrt{\hat{V}_{\tau}}.
+\end{equation}
+The validity of this placebo approach to conducting inference relies fundamentally on homoskedasticity across states because if the treated and un-treated states have different noise distributions, then there is no way we can learn $V_{\tau}$ from the un-treated states alone.
+
+
+
+
+
+\end{document}
