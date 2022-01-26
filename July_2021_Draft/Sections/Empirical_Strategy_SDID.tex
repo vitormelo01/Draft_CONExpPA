@@ -67,7 +67,7 @@ Compute the SDID estimator via the weighted DID regression
 $~$\\
 \indent In our application, we also include time-varying covariates $X_{it}$. As noted in \citet{arkhangelsky2021synthetic}, we incorporate adjustment for these covariates by applying the SDID, DID, and SC methods to the residuals $Y_{it}^{res}=Y_{it}-X_{it}\hat{\gamma}$ of the regression of $Y_{it}$ on $X_{it}$. Our vector of time-varying covariates includes measures at the state-year level of income per capita, population density, the unemployment rate, the share of income owned by the top one percent, the gini coefficient, as well as state-year demographic characteristics including the proportion of males, the proportion of married individuals, the proportion of white individuals, the proportion of individuals with a bachelor degree or higher, and shares of individuals aged 25 to 44, 45 to 64, and over 65.
 
-\subsection{Comparison to DID and SC}
+\subsection{Comparison to DID and SC} \label{did_sc_comp}
 
 In comparison to the SDID estimator, DID estimates the effect of the treatment by solving the same two-way fixed effects regression problem, but without either time or unit weights:
 \begin{equation} \label{eq:did_reg}
@@ -82,22 +82,22 @@ The SC estimator can be expressed in a similar way, except that relative to the 
 The SC weights $\hat{\omega}^{sc}$ are closely related to the SDID weights $\hat{\omega}^{sdid}$, with two exceptions. First, SDID allows for the inclusion of an intercept term $\omega_0$. Importantly, this means that the SDID weights do not need to be chosen to make the control states' pre-trends perfectly match the treated state's pre-trends. Rather, it is sufficient that the weights make the trends parallel.\footnote{The reason SDID is able to allow for this extra flexibility in the choice of weights is that the use of fixed effects $\alpha_i$ absorb any constant differences between different states \citep{arkhangelsky2021synthetic}.} Second, as noted before, SDID includes a regularization penalty to increase the dispersion of the weights and to ensure that they are unique.\footnote{If we were to set $\zeta=0$ and omit the intercept $\omega_0$, then $\hat{\omega}^{sdid}$ would equal $\hat{\omega}^{sc}$, corresponding exactly to a choice of unit weights discussed in \citet{abadie2010synthetic} in the case where $N_{tr}=1$.}
 
 To help facilitate more direct comparisons between $\hat{\tau}^{sdid}$, $\hat{\tau}^{did}$, and $\hat{\tau}^{sc}$, \citet{arkhangelsky2021synthetic} point out that each of these three estimators can be rewritten as a weighted average difference in adjusted outcomes (denoted by $\hat{\delta}_i$) for appropriate sample weights $\hat{\omega}_i$:
-\begin{equation}
+\begin{equation} \label{eq:ave_effect_deltas}
     \hat{\tau}=\hat{\delta}_{tr}-\sum_{i=1}^{N_{co}}\hat{\omega}_i\hat{\delta}_i.
 \end{equation}
 DID uses constant unit weights $\hat{\omega}_i^{did}=\frac{1}{N_{co}}$, and the construction of $\hat{\omega}_i^{sdid}$ and $\hat{\omega}_i^{sc}$ was described in Section \ref{sdid_estimation} and the previous paragraph. For each estimator then, the adjusted outcomes $\hat{\delta}_i$ can be expressed as
-\begin{equation}
+\begin{equation} \label{eq:sc_deltas}
     \hat{\delta}_i^{sc}=\frac{1}{T_{post}}\sum_{t=T_{pre}+1}^TY_{it},
 \end{equation}
-\begin{equation}
+\begin{equation} \label{eq:did_deltas}
     \hat{\delta}_i^{did}=\frac{1}{T_{post}}\sum_{t=T_{pre}+1}^TY_{it} - \frac{1}{T_{pre}}\sum_{t=1}^{T_{pre}}Y_{it},
 \end{equation}
-\begin{equation}
+\begin{equation} \label{eq:sdid_deltas}
     \hat{\delta}_i^{sdid}=\frac{1}{T_{post}}\sum_{t=T_{pre}+1}^TY_{it} - \sum_{t=1}^{T_{pre}}\hat{\lambda}_t^{sdid}Y_{it},
 \end{equation}
 
-\subsection{inference}
-To conduct statistical inference, we implement the ``placebo variance estimation'' approach in \citet{arkhangelsky2021synthetic}, which is motivated by placebo evaluations often considered in the literature on SCs \citep{abadie2010synthetic,abadie2015comparative}, and which can be applied when $N_{tr}=1$. The main idea of these placebo evaluations is to consider the behavior of $\hat{\tau}^{sdid}$, $\hat{\tau}^{did}$, or $\hat{\tau}^{sc}$ when we replace the states that were actually exposed to the treatment with different states that were not exposed. Essentially, we use placebo predictions based only on the un-treated states to estimate the noise level, and then use that to get a measure of the asymptotic variance (denoted by $\hat{V}_{\tau}$). Algorithm \ref{alg:two} outlines the procedure for estimating $\hat{V}_{\tau}$.\footnote{Recall that in our context, $N_{tr}=1$, and therefore $B=N_{co}$ such that we implement SDID, DID, and SC for each of the $N_{co}$ control states individually, in the same way we did with PA, IN, and ND.}
+\subsection{Inference} \label{sdid_inference}
+To conduct statistical inference, we implement the placebo variance estimation approach in \citet{arkhangelsky2021synthetic}, which is motivated by placebo evaluations often considered in the literature on SCs \citep{abadie2010synthetic,abadie2015comparative}, and which can be applied when $N_{tr}=1$. The main idea of these placebo evaluations is to consider the behavior of $\hat{\tau}^{sdid}$, $\hat{\tau}^{did}$, or $\hat{\tau}^{sc}$ when we replace the states that were actually exposed to the treatment with different states that were not exposed. Essentially, we use placebo predictions based only on the untreated states to estimate the noise level, and then use that to get a measure of the asymptotic variance (denoted by $\hat{V}_{\tau}$). Algorithm \ref{alg:two} outlines the procedure for estimating $\hat{V}_{\tau}$.\footnote{Recall that in our context, $N_{tr}=1$, and therefore $B=N_{co}$ such that we implement SDID, DID, and SC for each of the $N_{co}$ control states individually, in the same way we did with PA, IN, and ND.}
 \vspace{.25cm}
 \begin{center}
 \begin{algorithm}[H]
@@ -118,7 +118,7 @@ $~$\\
 \begin{equation}
     \tau \in \hat{\tau} \pm z_{\alpha/2}\sqrt{\hat{V}_{\tau}}.
 \end{equation}
-The validity of this placebo approach to conducting inference relies fundamentally on homoskedasticity across states because if the treated and un-treated states have different noise distributions, then there is no way we can learn $V_{\tau}$ from the un-treated states alone.
+The validity of this placebo approach to conducting inference relies fundamentally on homoskedasticity across states because if the treated and untreated states have different noise distributions, then there is no way we can learn $V_{\tau}$ from the untreated states alone.
 
 
 

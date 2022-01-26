@@ -4,19 +4,19 @@
 
 
 \subsection{Preferences, Actions, and Technology of the Consumer}
-Assume a representative consumer in need of skilled nursing home services. This consumer makes a discrete choice; that is, she chooses only one of the nursing homes available. No more than one and no less than one. The nursing homes are vertically differentiated based on quality where the consumer prefers higher quality nursing homes, all else equal. While nursing home quality is an important factor, it is certainly not the only factor. The benefits of choosing a given firm/state is likely to be determined by the weather, proximity to family, proximity to nature, among various other factors. We formalize this idea by adding a stochastic shock $v_i$ to the decisions of the nursing home consumer, thus making quality of nursing homes not deterministic of the consumer's choice. We assume that that all firms observe the biases and the probabilistic distribution of the valence shock. 
+Assume a representative consumer in need of nursing home services. This consumer makes a discrete choice; that is, she chooses only one of the nursing homes available. No more than one and no less than one. The nursing homes are vertically differentiated based on quality where the consumer prefers higher quality nursing homes, all else equal. While nursing home quality is an important factor, it is certainly not the only factor. The benefits of choosing a given firm/state is likely to be determined by the weather, proximity to family, proximity to nature, among various other factors. We formalize this idea by adding a stochastic shock $v_i$, which represents the preferences of the consumer for a given state. This stochastic shock implies that the quality of nursing homes does not determine with certainty the choices of consumers. We assume that that all firms observe the biases and the probabilistic distribution of the stochastic shock, but do not observe its realization.\footnote{The set up from my model is analogous to the setup in \citet{basinger2004remodeling}.} 
 
-Therefore, consumers have preferences $u(z_i,v_i) = v_i + z_i$ where $z_i$ represents the quality of firm $i$ and $v_i$ represents the stochastic shock of firm/state $i$. Let $s_i$ represent the net benefit a nursing home consumer gets from choosing a given state $i$ such that $s_i \equiv v_i + z_i$. Since the consumer only chooses one nursing home, she chooses the nursing home with the highest $s_i$.
+Consumers have preferences $u(z_i,v_i) = v_i + z_i$ where $z_i$ represents the quality of firm $i$ and $v_i$ represents the stochastic shock of firm/state $i$. Let $s_i$ represent the net benefit a nursing home consumer gets from choosing a given state $i$ such that $s_i \equiv v_i + z_i$. Since the consumer only chooses one nursing home, she chooses the nursing home with the highest $s_i$.
 
 \subsection{Preferences, Actions, and Technology of the Firms}
-Assume each state has a representative firm that offers nursing home services. The firms face a constant price $P$. There are many situations in healthcare where prices are set administratively, and thus are fixed. This is true of entire healthcare systems, such as the British National Health Service, and of sectors of health systems, such as Medicaid and Medicare in the US. Since the vast majority of patients in skilled nursing homes are under either Medicaid or Medicare (primarily Medicaid), we argue that a constant administratively set price for nursing home services is the most appropriate assumption for this scenario.
+Assume each state has a representative firm that offers nursing home services. The firms face a constant price $P$. There are many situations in healthcare where prices are set administratively, and thus are fixed. This is true of entire healthcare systems, such as the British National Health Service, and of sectors of health systems, such as Medicaid and Medicare in the US. Since the vast majority of patients in skilled nursing homes are under either Medicaid or Medicare (primarily Medicaid), We argue that a constant administratively set price for nursing home services is the most appropriate assumption for this scenario.
 
 Firms face a cost of quantity $c_x(x_i)$, such that $c_x'(x_i)=c$ where $c$ is a constant and is identical to all firms. The constant marginal cost of quantity assumption is taken for simplicity. Firms also face the cost of quality $c_z(z_i) $ which is increasing in $z_i$. Assume that for all $i$, $c_z'(z_i)>0$, $c_z''(z_i)>0$ and $c_z(0)=0$. Thus, cost of quality increases continuously and at an accelerating rate. Each firm maximizes profits such that \begin{equation}\pi_i = P*x_i(v_i, z_i, v_{-i}, z_{-j}) -c_x(x_i) -c_z(z_i) \end{equation} 
 where $x_i$ represents the demand for a given nursing home $i$, which depends on the stochastic shock $v_i$ and the quality of nursing home $z_i$, as well as the quality of other nursing homes $z_{-i}$ and the stochastic shock of other states $v_{-i}$. The firm maximizes profits by choosing $z_i$ such that \begin{equation} \frac{\partial x_i}{\partial z_i^*}*(P-c)= \frac{\partial c_z(z_i^*)}{\partial z_i} \end{equation} Assume that $P - c'(x_i)= P - c > 0$ such that each additional consumer that chooses firm $i$ brings in the net revenue $P - c$. Thus, firms compete for each consumer by choosing the level of quality where the probability of the consumer choosing firm $i$ is \begin{equation} x_{i}(z_i) \equiv p_i(z_i) \equiv p_i(z_i + v_i |z_{-i}, v_{-i}) \end{equation}
 where that $p_{i}(z)$ is continuously differentiable, increasing in $z_i$ and $v_i$, decreasing in $z_{-i}$ and $v_{-i}$, and concave in $z_i$ such that for all $i$, $p_{i}'(z_i)\geq 0$ and $p_{i}''(z_i) \leq 0$.
 
 \subsection{Timing, Information, and Equilibrium}
-The set up here is a one time game such that players (firms) choose quality level $z_i$ simultaneously. Assume that utility functions, payoffs, costs, strategies and types of all states are common knowledge. The appropriate equilibrium concept for this game is a Nash equilibrium. Thus, we assume that each state best responds with the knowledge that each opponent $j$ must choose its own optimal level of quality, $z_j^*$.
+The set up here is a one time game such that players (firms) choose quality level $z_i$ simultaneously. Assume that the utility function, payoffs, costs, strategies and types of all states are common knowledge. The appropriate equilibrium concept for this game is a Nash equilibrium. Thus, we assume that each state best responds with the knowledge that each opponent $j$ must choose its own optimal level of quality, $z_j^*$.
 
 \subsection{Solving the Model Without CON}
 The probability that a nursing home consumer chooses a state $i$ can be defined as \begin{equation}p_i(z) \equiv p(s_i> max(s_j), \forall j \neq i )\end{equation}
@@ -24,7 +24,7 @@ Thus, it must be that \begin{equation}p_i(z) \equiv \prod_{j\neq i} prob(v_i + z
  \begin{equation}p_i(z) \equiv \prod_{j\neq i} prob(z_i-z_j > v_j - v_i) \end{equation} 
 The bias between two states is denoted as $b_{ij} \equiv v_i -v_j $. $b_{ij}$ represents the bias in favor a state i and $b_{ji}$ represents the bias in favor of state j. Thus,\begin{equation}p_i(z) \equiv \prod_{j\neq i} prob(z_i -z_j > b_{ji}) \end{equation}  
 Hence, a firm i solves the following:\begin{equation}max \rightarrow [\prod_{j\neq i} prob(z_i -z_j > b_{ji})(P-c)] - c_z(z_i,x_i)\end{equation}
-Assuming an internal solution, we find 
+Assuming an internal solution, I find 
  \begin{equation}\frac{\partial [\prod_{j\neq i} prob(z_i^* -z_j > b_{ji})]}{\partial z_i}(P-c) = \frac{\partial c_z(z_i^*)}{\partial z_i}\end{equation}
 
 \subsection{Incorporating CON Regulations into the Model}
@@ -32,7 +32,7 @@ Assuming an internal solution, we find
 We model CON regulations as an increase in the marginal cost of quantity such that firms with CON have $c'(x_i) = c + R$ where $c$ is the constant marginal cost of quantity assumed above and $R$ is the additional cost of getting permission from government to offer an additional nursing home service. In that case, the firm in a CON state would maximize
 
 \begin{equation} max \rightarrow [\prod_{j\neq i} prob(z_i -z_j > b_{ji})](P-c - R) - c_z(z_i) \end{equation}
-Assuming an internal solution, we find 
+Assuming an internal solution, Ifind 
  \begin{equation}\frac{\partial [\prod_{j\neq i} prob(z_i^* -z_j > b_{ji})]}{\partial z_i}(P-c-R) = \frac{\partial c_z(z_i^*)}{\partial z_i}\end{equation}
 
 Recall that $p_{i}'(z_i)\geq 0$, $p_{i}''(z_i) \leq 0$, $c_z'(z_i)>0$, and $c_z''(z_i)>0$. Thus, the expected marginal benefit curve associated with $p_{i}'(z_i)$ is concave, while the marginal cost curve $c_z'(z_i)$ is convex. Figure \ref{fig:model_graph} shows how an increase in marginal cost associated with nursing home CON leads to a decrease in the marginal benefit of increasing quality, which will lead to lower equilibrium quality levels in CON states. A reduction in quality leads to a reduction in quantity, since that firm is less likely to attract nursing home consumers. Since prices are fixed, a reduction in quantity is associated with a reduction in revenue, and consequently a reduction is Medicaid expenditures for state $i$. 
@@ -43,23 +43,30 @@ If a given state with CON laws repeals its CON regulations, then the state would
 
 %\subsubsection{Proposition 1:} 
 
-\begin{Proposition}
+\begin{Proposition}\label{prop1}
 The implementation of CON in state $i$ will lead to a reduction in the equilibrium nursing home quality in $i$. Likewise, the repeal of CON in state $i$ will lead to an increase in the equilibrium nursing home quality in state $i$. 
 \end{Proposition}
 
 
 As shown above, the implementation of CON leads to a reduction in the marginal benefit of quality for the firm. The marginal cost of quality function remains the same. Thus, the only way for the firm to equalize marginal benefits to marginal cost is to reduce quality up to the point where marginal benefit equals marginal cost of quality. 
 
-\begin{Proposition}
+\begin{Proposition}\label{prop2}
 The implementation of CON in state $i$ will lead to a reduction in the expected quantity of nursing homes services in state $i$. Likewise, the repeal of CON in state $i$ will lead to an increase in the expected quantity of nursing homes services in state $i$. 
 \end{Proposition}
 
-Proposition (1) shows that the implementation of CON in state $i$ must decrease the quality level chosen by a given firm $i$. In an equilibrium with many consumers, a reduction in quality will decrease the probability that each consumer comes to state $i$, which implies a lower expected quantity of nursing home services. The opposite would be true for a repeal of CON. 
+Proposition (\ref{prop1}) shows that the implementation of CON in state $i$ must decrease the quality level chosen by a given firm $i$. In an equilibrium with many consumers, a reduction in quality will decrease the probability that each consumer comes to state $i$, which implies a lower expected quantity of nursing home services. The opposite would be true for a repeal of CON. 
 
-\begin{Proposition}
+\begin{Proposition} \label{prop3}
 The implementation of CON in state $i$ will lead to a reduction in total nursing home expenditures and Medicaid expenditures in state $i$. Likewise, the repeal of CON in state $i$ will lead to an increase in total expenditures and Medicaid expenditures in state $i$.  
 \end{Proposition}
 
-Since a large majority of nursing home consumers are covered by government programs (primarily Medicaid), we assume prices to be fixed. Thus, proposition (2) implies that an increase in the quantity of nursing home services will lead to an increase in total nursing home expenditures, as well as Medicaid expenditures.
+Since a large majority of nursing home consumers are covered by government programs (primarily Medicaid), we assume prices to be fixed. Thus, proposition (\ref{prop2}) implies that an increase in the quantity of nursing home services will lead to an increase in total nursing home expenditures, as well as Medicaid expenditures.
+
+\begin{Proposition} \label{prop4}
+Assuming a perfectly inelastic demand for nursing homes, the implementation of CON in state $i$ will lead to an increase in Medicaid expenditures in other states. Likewise, the repeal of CON in state $i$ will lead to a decrease in Medicaid expenditures in other states.
+\end{Proposition}
+
+If the the demand for nursing home is perfectly inelastic, a decrease in the quantity of nursing home consumers in state $i$ implies an increase in nursing home consumers in other states. Some states will be relatively more affected than others by a change in state $i$'s CON regulation, but nursing home services and expenditure in other States taken as a whole must increase. 
+
 
 \end{document}
