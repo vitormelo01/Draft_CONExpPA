@@ -7,11 +7,22 @@
 \newpage
 \begin{figure}[t]
 	\begin{center}
+	\caption{\label{fig:nh_histogram} \centering Number of States Regulating Each Type of Health Service via CON in 2020}
+    \includegraphics[width=\textwidth,keepaspectratio]{Corrected_Hist.png}
+    \end{center}
+    \footnotesize
+		\textit{Notes}: This figure shows the number of states regulating each health service category in 2020. A total of 36 states regulate nursing home beds, as shown in black. All other services that are regulated by CON are shown in gray. Data source: American Health Planning Association (AHPA).
+\end{figure}
+\clearpage
+
+\newpage
+\begin{figure}[t]
+	\begin{center}
 	\caption{\label{fig:nh_con_map} \centering Nursing Home Certificate-of-Need Regulation in the United States}
     \includegraphics[width=\textwidth,keepaspectratio]{CON_Map.pdf}
     \end{center}
     \footnotesize
-		\textit{Notes}: This figure shows which states dropped NH-CON regulations during our sample period (black), and which states did (dark gray) and did not (light gray) have NH-CON regulations during our sample period. All of the states that had NH-CON during our sample period except Connecticut and Louisiana, both of which adopted NH-CON during the sample period, were included in our donor pool of potential controls when finding synthetic matches for the states that dropped NH-CON. Data source: American Health Planning Association (AHPA), compiled by \citet{stratmann2014certificate}, and the National Conference of State Legislatures.
+		\textit{Notes}: This figure shows which states dropped NH-CON regulations during our sample period (black), and which states did (dark gray) and did not (light gray) have NH-CON regulations during our sample period. All of the states that had NH-CON during our sample period except Connecticut and Louisiana, both of which adopted NH-CON during the sample period, were included in our donor pool of potential controls when finding synthetic matches for the states that dropped NH-CON. Data source: American Health Planning Association (AHPA) and the National Conference of State Legislatures.
 \end{figure}
 \clearpage
 
@@ -32,20 +43,20 @@
     %\path
     \coordinate (cstart) at (0,0);
     \coordinate (cend) at (10,8);
-    \coordinate (mb0start) at (0,2.5);
+    \coordinate (mb0start) at (0,1.5);
     \coordinate (mb0end) at (10,6);
-    \coordinate (mb1start) at (0,1.5);
-    \coordinate (mb1end) at (10,5);
+    \coordinate (mb1start) at (0,1.2);
+    \coordinate (mb1end) at (10,4.5);
     % Draw the lines
      \draw[thick, name path=c] (cstart) to[bend right = 30] (cend) node[right] {$c_z'(z_i)$};
      \draw[thick, name path=mb0] (mb0start) to[bend left = 15] (mb0end) node[right] {$MB^{No~CON}(z_i)$};
      \draw[thick, name path=mb1] (mb1start) to[bend left = 15] (mb1end) node[right] {$MB^{CON}(z_i)$};
      \path[name intersections={of=c and mb0, by=eq0}];
      \draw[black,fill] (eq0) circle[radius = 2pt];
-    \draw[thick, dotted] (eq0) -- (eq0 |- 0,0) node[below,xshift=.5cm]{$z_i^{*No~CON}$};
+    \draw[thick, dotted] (eq0) -- (eq0 |- 0,0) node[below,xshift=.35cm]{$z_i^{*No~CON}$};
     \path[name intersections={of=c and mb1, by=eq1}];
      \draw[black,fill] (eq1) circle[radius = 2pt];
-    \draw[thick, dotted] (eq1) -- (eq1 |- 0,0) node[below,xshift=-.2cm]{$z_i^{*CON}$};
+    \draw[thick, dotted] (eq1) -- (eq1 |- 0,0) node[below,xshift=-.1cm]{$z_i^{*CON}$};
 \end{tikzpicture}\\
 		\end{center}
 		\footnotesize
