@@ -69,6 +69,8 @@ axis/.style={<->},
 %\renewcommand{\familydefault}{\rmdefault}
 \usepackage{mathptmx}   %Times New Roman Font
 %\linespread{1.25}   %1.5 spacing
+\usepackage{xr}     %Allows for referencing across docs
+\externaldocument{Appendices}
 
 \usepackage{subfiles}
 
@@ -107,8 +109,7 @@ axis/.style={<->},
 %\vspace{-.2in}
 \begin{abstract}
 \noindent 
-
-Certificate-of-Need (CON) laws restrict the quantity of health services by requiring providers to convince a government board that there is a ``need" for a given service in their region. Nursing home CON regulations are the most prevalent and often the most restrictive CON regulation. This paper explores why this regulation is so widespread by developing a model where firms compete for a mobile nursing home consumer. The model shows that repealing CON leads to an increase in the quantity of nursing home services and expenditures. We also find that inter-state competition incentivizes state politicians to impose nursing home CON restrictions that are higher than they would be otherwise. We support these predictions by analyzing the effect of this regulation on Medicaid and total expenditure, as well as on the quantity of nursing homes and nursing home beds. Applying a synthetic difference in differences analysis, we find that the repeal of nursing home CON laws led to an increase in Medicaid expenditures of \$1.32 billion and \$334 million in Pennsylvania and Indiana, respectively, while the estimated effect in North Dakota is not reliable due to a lack of evidence for parallel trends. We also find that this repeal caused an increase in the quantity of nursing homes, nursing home beds, and total nursing home expenditure in all three states.
+Certificate-of-Need (CON) laws restrict the quantity of health services by requiring providers to convince a government board that there is a ``need" for a given service in their region. Nursing home CON regulations are the most prevalent and often the most restrictive CON regulation. This paper explores why this regulation is so widespread by developing a model where firms compete for a mobile nursing home consumer. The model shows that repealing CON leads to an increase in the quality and quantity of nursing home services, as well as expenditures. The model also predicts that inter-state competition incentivizes state politicians to impose nursing home CON restrictions that are higher than they otherwise would be. We support these predictions by analyzing the effect of this regulation on Medicaid and total expenditures, as well as on the number of nursing home beds, nursing home facilities, and specialized beds. Applying a synthetic difference in differences analysis, we find that the repeal of nursing home CON laws led to an increase in Medicaid expenditures of \$1.32 billion and \$334 million in Pennsylvania and Indiana, respectively, while the estimated effect in North Dakota is not reliable due to a lack of evidence for parallel trends. We also find that this repeal caused an increase in the number of nursing home beds, nursing home facilities, specialized beds, and total expenditure.
 
 \bigskip
 			
@@ -170,10 +171,10 @@ Certificate-of-Need (CON) laws restrict the quantity of health services by requi
 \bibliographystyle{ecta}
 \bibliography{References}
 
-\subfile{Sections/Tables_SDID}
+\subfile{Sections/Tables_SDID_NoBord_NoCov}
 
 \newpage 
-\subfile{Sections/Figures_SDID}
+\subfile{Sections/Figures_SDID_NoBord_NoCov}
 
 \end{document}
 

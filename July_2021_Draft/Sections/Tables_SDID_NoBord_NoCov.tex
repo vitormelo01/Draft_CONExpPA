@@ -1,0 +1,301 @@
+\documentclass[../Main.tex]{subfiles}
+
+\graphicspath{{\subfix{../Figures_and_Tables/}}}
+ 
+\begin{document}
+
+\newgeometry{margin=1in}
+
+%\setcounter{table}{0}
+%\renewcommand{\thetable}{A\arabic{table}}
+
+
+
+%%%%%%%%%%%% Per Capita Medicaid Expenditure %%%%%%%%%%%%%
+\newpage
+\null
+\vfill
+\begin{table}[htbp]\centering \footnotesize
+\def\sym#1{\ifmmode^{#1}\else\(^{#1}\)\fi}
+\captionsetup{width=.8\textwidth}
+\caption{\centering Effects of Dropping NH-CON Regulations on Per Capita Medicaid Nursing Home Expenditure}
+\label{tab:ave_results_med_exp_nobord_nocov}
+\setlength{\tabcolsep}{10pt}
+\begin{tabular}{l*{3}{c}}
+\hline\hline
+\\[-2ex]
+&\multicolumn{1}{c}{}&\multicolumn{1}{c}{Synthetic}&\multicolumn{1}{c}{Synthetic}\\
+&\multicolumn{1}{c}{Diff-in-Diff}&\multicolumn{1}{c}{Control}&\multicolumn{1}{c}{Diff-in-Diff}\\
+&\multicolumn{1}{c}{(1)}&\multicolumn{1}{c}{(2)}&\multicolumn{1}{c}{(3)}\\
+\\[-2ex]
+\hline
+\\[-.1ex]
+\multicolumn{4}{l}{\textbf{\textit{Panel A.} Pennsylvania}}\\
+\\[-1.5ex]
+\multicolumn{1}{l}{Average Effect ($\hat{\tau}$)}&   \multicolumn{1}{c}{$126.26^{***}$}&   \multicolumn{1}{c}{$124.53^{***}$}&  \multicolumn{1}{c}{$101.73^{***}$}\\
+\\[-2ex]
+\multicolumn{1}{l}{\ \ \ \ \ Standard Error}  &\multicolumn{1}{c}{[31.95]}&\multicolumn{1}{c}{[28.91]}&\multicolumn{1}{c}{[28.06]}\\
+\\[-2ex]
+\multicolumn{1}{l}{\ \ \ \ \ 95\% Confidence Interval}&   \multicolumn{1}{c}{(63.63, 188.89)}&   \multicolumn{1}{c}{(67.86, 181.20)}&   \multicolumn{1}{c}{(46.74, 156.73)}\\
+\\[-2ex]
+\multicolumn{1}{l}{\ \ \ \ \ Pre-Intervention Average}&   \multicolumn{3}{c}{145.56}\\
+\\[-.1ex]
+\multicolumn{4}{l}{\textbf{\textit{Panel B.} Indiana}}\\
+\\[-1.5ex]
+\multicolumn{1}{l}{Average Effect ($\hat{\tau}$)}&   \multicolumn{1}{c}{18.20}&   \multicolumn{1}{c}{$47.70^{*}$}&  \multicolumn{1}{c}{$48.76^{*}$}\\
+\\[-2ex]
+\multicolumn{1}{l}{\ \ \ \ \ Standard Error}  &\multicolumn{1}{c}{[31.79]}&\multicolumn{1}{c}{[25.33]}&\multicolumn{1}{c}{[29.71]}\\
+\\[-2ex]
+\multicolumn{1}{l}{\ \ \ \ \ 95\% Confidence Interval}&   \multicolumn{1}{c}{(-44.11, 80.51)}&   \multicolumn{1}{c}{(-1.96, 97.35)}&   \multicolumn{1}{c}{(-9.48, 106.99)}\\
+\\[-2ex]
+\multicolumn{1}{l}{\ \ \ \ \ Pre-Intervention Average}&   \multicolumn{3}{c}{129.12}\\
+\\[-.1ex]
+\multicolumn{4}{l}{\textbf{\textit{Panel C.} North Dakota}}\\
+\\[-1.5ex]
+\multicolumn{1}{l}{Average Effect ($\hat{\tau}$)}&   \multicolumn{1}{c}{-48.96} &   \multicolumn{1}{c}{$-74.05^{**}$}&  \multicolumn{1}{c}{-45.04}\\
+\\[-2ex]
+\multicolumn{1}{l}{\ \ \ \ \ Standard Error}  &\multicolumn{1}{c}{[31.63]}&\multicolumn{1}{c}{[31.99]}&\multicolumn{1}{c}{[28.52]}\\
+\\[-2ex]
+\multicolumn{1}{l}{\ \ \ \ \ 95\% Confidence Interval}&   \multicolumn{1}{c}{(-110.96, 13.03)}&   \multicolumn{1}{c}{(-136.74, -11.35)}&   \multicolumn{1}{c}{(-100.94, 10.86)}\\
+\\[-2ex]
+\multicolumn{1}{l}{\ \ \ \ \ Pre-Intervention Average}&   \multicolumn{3}{c}{140.84}\\
+\\[-.1ex]
+\hline\hline
+\\[-2ex]
+\multicolumn{4}{p{.8\linewidth}}{\footnotesize \textit{Notes}: This table reports the average estimated effect, $\hat{\tau}$ from equation (\ref{eq:ave_effect_deltas}), of dropping NH-CON regulations on per capita Medicaid nursing home expenditure in PA, IN, and ND using the DID, SC, and SDID estimators. Also reported are standard errors and 95\% confidence intervals using the placebo variance estimation approach outlined in Section \ref{sdid_inference}. Significance levels are reported as *** = p$<$0.01, ** = p$<$0.05, * = p$<$0.1. The baseline average amount of per capita Medicaid nursing home expenditure for each treated state is also provided. Data source: 1980-2014 National Health Expenditure Accounts (NHEA).}
+\end{tabular}
+\end{table}
+\vfill
+\clearpage
+
+
+
+%%%%%%%%%%%% Per Capita Total Expenditure %%%%%%%%%%%%%
+\newpage
+\null
+\vfill
+\begin{table}[htbp]\centering \footnotesize
+\def\sym#1{\ifmmode^{#1}\else\(^{#1}\)\fi}
+\captionsetup{width=.78\textwidth}
+\caption{\centering Effects of Dropping NH-CON Regulations on Total Per Capita Nursing Home Expenditure}
+\label{tab:ave_results_tot_exp_nobord_nocov}
+\setlength{\tabcolsep}{10pt}
+\begin{tabular}{l*{3}{c}}
+\hline\hline
+\\[-2ex]
+&\multicolumn{1}{c}{}&\multicolumn{1}{c}{Synthetic}&\multicolumn{1}{c}{Synthetic}\\
+&\multicolumn{1}{c}{Diff-in-Diff}&\multicolumn{1}{c}{Control}&\multicolumn{1}{c}{Diff-in-Diff}\\
+&\multicolumn{1}{c}{(1)}&\multicolumn{1}{c}{(2)}&\multicolumn{1}{c}{(3)}\\
+\\[-2ex]
+\hline
+\\[-.1ex]
+\multicolumn{4}{l}{\textbf{\textit{Panel A.} Pennsylvania}}\\
+\\[-1.5ex]
+\multicolumn{1}{l}{Average Effect ($\hat{\tau}$)}&   \multicolumn{1}{c}{$177.17^{***}$}&   \multicolumn{1}{c}{$122.39^{***}$}&  \multicolumn{1}{c}{$115.73^{***}$}\\
+\\[-2ex]
+\multicolumn{1}{l}{\ \ \ \ \ Standard Error}  &\multicolumn{1}{c}{[59.58]}&\multicolumn{1}{c}{[38.15]}&\multicolumn{1}{c}{[34.91]}\\
+\\[-2ex]
+\multicolumn{1}{l}{\ \ \ \ \ 95\% Confidence Interval}&   \multicolumn{1}{c}{(60.39, 293.96)}&   \multicolumn{1}{c}{(47.62, 197.16)}&   \multicolumn{1}{c}{(47.31, 184.16)}\\
+\\[-2ex]
+\multicolumn{1}{l}{\ \ \ \ \ Pre-Intervention Average}&   \multicolumn{3}{c}{361.02}\\
+\\[-.1ex]
+\multicolumn{4}{l}{\textbf{\textit{Panel B.} Indiana}}\\
+\\[-1.5ex]
+\multicolumn{1}{l}{Average Effect ($\hat{\tau}$)}&   \multicolumn{1}{c}{11.65}&   \multicolumn{1}{c}{-3.9}&  \multicolumn{1}{c}{20.48}\\
+\\[-2ex]
+\multicolumn{1}{l}{\ \ \ \ \ Standard Error}  &\multicolumn{1}{c}{[51.67]}&\multicolumn{1}{c}{[36.83]}&\multicolumn{1}{c}{[33.30]}\\
+\\[-2ex]
+\multicolumn{1}{l}{\ \ \ \ \ 95\% Confidence Interval}&   \multicolumn{1}{c}{(-89.63, 112.92)}&   \multicolumn{1}{c}{(-76.08, 68.28)}&   \multicolumn{1}{c}{(-44.79, 85.74)}\\
+\\[-2ex]
+\multicolumn{1}{l}{\ \ \ \ \ Pre-Intervention Average}&   \multicolumn{3}{c}{385.26}\\
+\\[-.1ex]
+\multicolumn{4}{l}{\textbf{\textit{Panel C.} North Dakota}}\\
+\\[-1.5ex]
+\multicolumn{1}{l}{Average Effect ($\hat{\tau}$)}&   \multicolumn{1}{c}{81.03}&   \multicolumn{1}{c}{40.47}&  \multicolumn{1}{c}{39.94}\\
+\\[-2ex]
+\multicolumn{1}{l}{\ \ \ \ \ Standard Error}  &\multicolumn{1}{c}{[61.52]}&\multicolumn{1}{c}{[36.06]}&\multicolumn{1}{c}{[31.20]}\\
+\\[-2ex]
+\multicolumn{1}{l}{\ \ \ \ \ 95\% Confidence Interval}&   \multicolumn{1}{c}{(-39.55, 201.60)}&   \multicolumn{1}{c}{(-30.20, 111.15)}&   \multicolumn{1}{c}{(-21.22, 101.09)}\\
+\\[-2ex]
+\multicolumn{1}{l}{\ \ \ \ \ Pre-Intervention Average}&   \multicolumn{3}{c}{414.59}\\
+\\[-.1ex]
+\hline\hline
+\\[-2ex]
+\multicolumn{4}{p{.78\linewidth}}{\footnotesize \textit{Notes}: This table reports the average estimated effect, $\hat{\tau}$ from equation (\ref{eq:ave_effect_deltas}), of dropping NH-CON regulations on total per capita nursing home expenditure in PA, IN, and ND using the DID, SC, and SDID estimators. Also reported are standard errors and 95\% confidence intervals using the placebo variance estimation approach outlined in Section \ref{sdid_inference}. Significance levels are reported as *** = p$<$0.01, ** = p$<$0.05, * = p$<$0.1. The baseline average amount of total per capita nursing home expenditure for each treated state is also provided. Data source: 1980-2014 National Health Expenditure Accounts (NHEA).}
+\end{tabular}
+\end{table}
+\vfill
+\clearpage
+
+
+
+%%%%%%%%%%%% Quantity of Certified Beds Per 100,000 %%%%%%%%%%%%%
+\newpage
+\null
+\vfill
+\begin{table}[htbp]\centering \footnotesize
+\def\sym#1{\ifmmode^{#1}\else\(^{#1}\)\fi}
+\captionsetup{width=.75\textwidth}
+\caption{\centering Effects of Dropping NH-CON Regulations on the Quantity of Nursing Home Beds Per 100,000}
+\label{tab:ave_results_q_nhb_nobord_nocov}
+\setlength{\tabcolsep}{10pt}
+\begin{tabular}{l*{3}{c}}
+\hline\hline
+\\[-2ex]
+&\multicolumn{1}{c}{}&\multicolumn{1}{c}{Synthetic}&\multicolumn{1}{c}{Synthetic}\\
+&\multicolumn{1}{c}{Diff-in-Diff}&\multicolumn{1}{c}{Control}&\multicolumn{1}{c}{Diff-in-Diff}\\
+&\multicolumn{1}{c}{(1)}&\multicolumn{1}{c}{(2)}&\multicolumn{1}{c}{(3)}\\
+\\[-2ex]
+\hline
+\\[-.1ex]
+\multicolumn{4}{l}{\textbf{\textit{Panel A.} Pennsylvania}}\\
+\\[-1.5ex]
+\multicolumn{1}{l}{Average Effect ($\hat{\tau}$)}&   \multicolumn{1}{c}{$14.84^{**}$}&   \multicolumn{1}{c}{$13.51^{*}$}&  \multicolumn{1}{c}{$14.53^{***}$}\\
+\\[-2ex]
+\multicolumn{1}{l}{\ \ \ \ \ Standard Error}  &\multicolumn{1}{c}{[6.78]}&\multicolumn{1}{c}{[7.30]}&\multicolumn{1}{c}{[4.95]}\\
+\\[-2ex]
+\multicolumn{1}{l}{\ \ \ \ \ 95\% Confidence Interval}&   \multicolumn{1}{c}{(1.56, 28.13)}&   \multicolumn{1}{c}{(-0.79, 27.81)}&   \multicolumn{1}{c}{(4.82, 24.24)}\\
+\\[-2ex]
+\multicolumn{1}{l}{\ \ \ \ \ Pre-Intervention Average}&   \multicolumn{3}{c}{28.51}\\
+\\[-.1ex]
+\multicolumn{4}{l}{\textbf{\textit{Panel B.} Indiana}}\\
+\\[-1.5ex]
+\multicolumn{1}{l}{Average Effect ($\hat{\tau}$)}&   \multicolumn{1}{c}{$11.57^{**}$}&   \multicolumn{1}{c}{6.81} &  \multicolumn{1}{c}{$6.94^{*}$}\\
+\\[-2ex]
+\multicolumn{1}{l}{\ \ \ \ \ Standard Error}  &\multicolumn{1}{c}{[5.30]}&\multicolumn{1}{c}{[5.54]}&\multicolumn{1}{c}{[4.01]}\\
+\\[-2ex]
+\multicolumn{1}{l}{\ \ \ \ \ 95\% Confidence Interval}&   \multicolumn{1}{c}{(1.18, 21.96)}&   \multicolumn{1}{c}{(-4.04, 17.66)}&   \multicolumn{1}{c}{(-0.92, 14.80)}\\
+\\[-2ex]
+\multicolumn{1}{l}{\ \ \ \ \ Pre-Intervention Average}&   \multicolumn{3}{c}{17.03}\\
+\\[-.1ex]
+\multicolumn{4}{l}{\textbf{\textit{Panel C.} North Dakota}}\\
+\\[-1.5ex]
+\multicolumn{1}{l}{Average Effect ($\hat{\tau}$)}&   \multicolumn{1}{c}{6.41}&   \multicolumn{1}{c}{9.63}&  \multicolumn{1}{c}{5.17}\\
+\\[-2ex]
+\multicolumn{1}{l}{\ \ \ \ \ Standard Error}  &\multicolumn{1}{c}{[7.30]}&\multicolumn{1}{c}{[8.87]}&\multicolumn{1}{c}{[6.27]}\\
+\\[-2ex]
+\multicolumn{1}{l}{\ \ \ \ \ 95\% Confidence Interval}&   \multicolumn{1}{c}{(-7.89, 20.71)}&   \multicolumn{1}{c}{(-7.76, 27.01)}&   \multicolumn{1}{c}{(-7.12, 17.46)}\\
+\\[-2ex]
+\multicolumn{1}{l}{\ \ \ \ \ Pre-Intervention Average}&   \multicolumn{3}{c}{1.64}\\
+\\[-.1ex]
+\hline\hline
+\\[-2ex]
+\multicolumn{4}{p{.75\linewidth}}{\footnotesize \textit{Notes}: This table reports the average estimated effect, $\hat{\tau}$ from equation (\ref{eq:ave_effect_deltas}), of dropping NH-CON regulations on the quantity of nursing home beds per 100,000 in PA, IN, and ND using the DID, SC, and SDID estimators. Also reported are standard errors and 95\% confidence intervals using the placebo variance estimation approach outlined in Section \ref{sdid_inference}. Significance levels are reported as *** = p$<$0.01, ** = p$<$0.05, * = p$<$0.1. The baseline average quantity of nursing home beds per 100,000 for each treated state is also provided. Data source: 1991-2014 Centers for Medicare and Medicaid Services’ (CMS) Provider of Services files.}
+\end{tabular}
+\end{table}
+\vfill
+\clearpage
+
+
+
+
+%%%%%%%%%%%% Quantity of Nursing Homes Per 100,000 %%%%%%%%%%%%%
+\newpage
+\null
+\vfill
+\begin{table}[htbp]\centering \footnotesize
+\def\sym#1{\ifmmode^{#1}\else\(^{#1}\)\fi}
+\captionsetup{width=.75\textwidth}
+\caption{\centering Effects of Dropping NH-CON Regulations on the Quantity of Nursing Homes Per 100,000}
+\label{tab:ave_results_q_nh_nobord_nocov}
+\setlength{\tabcolsep}{10pt}
+\begin{tabular}{l*{3}{c}}
+\hline\hline
+\\[-2ex]
+&\multicolumn{1}{c}{}&\multicolumn{1}{c}{Synthetic}&\multicolumn{1}{c}{Synthetic}\\
+&\multicolumn{1}{c}{Diff-in-Diff}&\multicolumn{1}{c}{Control}&\multicolumn{1}{c}{Diff-in-Diff}\\
+&\multicolumn{1}{c}{(1)}&\multicolumn{1}{c}{(2)}&\multicolumn{1}{c}{(3)}\\
+\\[-2ex]
+\hline
+\\[-.1ex]
+\multicolumn{4}{l}{\textbf{\textit{Panel A.} Pennsylvania}}\\
+\\[-1.5ex]
+\multicolumn{1}{l}{Average Effect ($\hat{\tau}$)}&   \multicolumn{1}{c}{$0.53^{*}$}&   \multicolumn{1}{c}{0.40}&  \multicolumn{1}{c}{$0.44^{***}$}\\
+\\[-2ex]
+\multicolumn{1}{l}{\ \ \ \ \ Standard Error}  &\multicolumn{1}{c}{[0.28]}&\multicolumn{1}{c}{[0.27]}&\multicolumn{1}{c}{[0.17]}\\
+\\[-2ex]
+\multicolumn{1}{l}{\ \ \ \ \ 95\% Confidence Interval}&   \multicolumn{1}{c}{(-0.03, 1.08)}&   \multicolumn{1}{c}{(-0.14, 0.94)}&   \multicolumn{1}{c}{(0.10, 0.77)}\\
+\\[-2ex]
+\multicolumn{1}{l}{\ \ \ \ \ Pre-Intervention Average}&   \multicolumn{3}{c}{0.63}\\
+\\[-.1ex]
+\multicolumn{4}{l}{\textbf{\textit{Panel B.} Indiana}}\\
+\\[-1.5ex]
+\multicolumn{1}{l}{Average Effect ($\hat{\tau}$)}&   \multicolumn{1}{c}{$0.41^{**}$}&   \multicolumn{1}{c}{0.34} &  \multicolumn{1}{c}{$0.25^{*}$}\\
+\\[-2ex]
+\multicolumn{1}{l}{\ \ \ \ \ Standard Error}  &\multicolumn{1}{c}{[0.20]}&\multicolumn{1}{c}{[0.22]}&\multicolumn{1}{c}{[0.13]}\\
+\\[-2ex]
+\multicolumn{1}{l}{\ \ \ \ \ 95\% Confidence Interval}&   \multicolumn{1}{c}{(0.03, 0.80)}&   \multicolumn{1}{c}{(-0.10, 0.78)}&   \multicolumn{1}{c}{(-0.02, 0.51)}\\
+\\[-2ex]
+\multicolumn{1}{l}{\ \ \ \ \ Pre-Intervention Average}&   \multicolumn{3}{c}{0.63}\\
+\\[-.1ex]
+\multicolumn{4}{l}{\textbf{\textit{Panel C.} North Dakota}}\\
+\\[-1.5ex]
+\multicolumn{1}{l}{Average Effect ($\hat{\tau}$)}&   \multicolumn{1}{c}{0.31}&   \multicolumn{1}{c}{0.35}&  \multicolumn{1}{c}{0.28}\\
+\\[-2ex]
+\multicolumn{1}{l}{\ \ \ \ \ Standard Error}  &\multicolumn{1}{c}{[0.31]}&\multicolumn{1}{c}{[0.33]}&\multicolumn{1}{c}{[0.23]}\\
+\\[-2ex]
+\multicolumn{1}{l}{\ \ \ \ \ 95\% Confidence Interval}&   \multicolumn{1}{c}{(-0.28, 0.91)}&   \multicolumn{1}{c}{(-0.30, 1.00)}&   \multicolumn{1}{c}{(-0.17, 0.74)}\\
+\\[-2ex]
+\multicolumn{1}{l}{\ \ \ \ \ Pre-Intervention Average}&   \multicolumn{3}{c}{0.08}\\
+\\[-.1ex]
+\hline\hline
+\\[-2ex]
+\multicolumn{4}{p{.75\linewidth}}{\footnotesize \textit{Notes}: This table reports the average estimated effect, $\hat{\tau}$ from equation (\ref{eq:ave_effect_deltas}), of dropping NH-CON regulations on the quantity of nursing homes per 100,000 in PA, IN, and ND using the DID, SC, and SDID estimators. Also reported are standard errors and 95\% confidence intervals using the placebo variance estimation approach outlined in Section \ref{sdid_inference}. Significance levels are reported as *** = p$<$0.01, ** = p$<$0.05, * = p$<$0.1. The baseline average quantity of nursing homes per 100,000 for each treated state is also provided. Data source: 1991-2014 Centers for Medicare and Medicaid Services’ (CMS) Provider of Services files.}
+\end{tabular}
+\end{table}
+\vfill
+\clearpage
+
+
+
+
+%%%%%%%%%%%% Quantity of Specialized Beds Per 100,000 %%%%%%%%%%%%%
+\newpage
+\null
+\vfill
+\begin{table}[htbp]\centering \footnotesize
+\def\sym#1{\ifmmode^{#1}\else\(^{#1}\)\fi}
+\captionsetup{width=.75\textwidth}
+\caption{\centering Effects of Dropping NH-CON Regulations on the Quantity of Specialized Nursing Home Beds Per 100,000}
+\label{tab:ave_results_q_specbeds_nobord_nocov}
+\setlength{\tabcolsep}{10pt}
+\begin{tabular}{l*{3}{c}}
+\hline\hline
+\\[-2ex]
+&\multicolumn{1}{c}{}&\multicolumn{1}{c}{Synthetic}&\multicolumn{1}{c}{Synthetic}\\
+&\multicolumn{1}{c}{Diff-in-Diff}&\multicolumn{1}{c}{Control}&\multicolumn{1}{c}{Diff-in-Diff}\\
+&\multicolumn{1}{c}{(1)}&\multicolumn{1}{c}{(2)}&\multicolumn{1}{c}{(3)}\\
+\\[-2ex]
+\hline
+\\[-.1ex]
+\multicolumn{4}{l}{\textbf{\textit{Panel A.} Pennsylvania}}\\
+\\[-1.5ex]
+\multicolumn{1}{l}{Average Effect ($\hat{\tau}$)}&   \multicolumn{1}{c}{$2.39^{***}$}&   \multicolumn{1}{c}{$2.41^{***}$}&  \multicolumn{1}{c}{$2.26^{***}$}\\
+\\[-2ex]
+\multicolumn{1}{l}{\ \ \ \ \ Standard Error}  &\multicolumn{1}{c}{[0.58]}&\multicolumn{1}{c}{[0.40]}&\multicolumn{1}{c}{[0.80]}\\
+\\[-2ex]
+\multicolumn{1}{l}{\ \ \ \ \ 95\% Confidence Interval}&   \multicolumn{1}{c}{(1.26, 3.53)}&   \multicolumn{1}{c}{(1.62, 3.19)}&   \multicolumn{1}{c}{(0.68, 3.84)}\\
+\\[-2ex]
+\multicolumn{1}{l}{\ \ \ \ \ Pre-Intervention Average}&   \multicolumn{3}{c}{0.33}\\
+\\[-.1ex]
+\multicolumn{4}{l}{\textbf{\textit{Panel B.} Indiana}}\\
+\\[-1.5ex]
+\multicolumn{1}{l}{Average Effect ($\hat{\tau}$)}&   \multicolumn{1}{c}{0.68}&   \multicolumn{1}{c}{0.61} &  \multicolumn{1}{c}{0.86}\\
+\\[-2ex]
+\multicolumn{1}{l}{\ \ \ \ \ Standard Error}  &\multicolumn{1}{c}{[0.65]}&\multicolumn{1}{c}{[0.52]}&\multicolumn{1}{c}{[1.03]}\\
+\\[-2ex]
+\multicolumn{1}{l}{\ \ \ \ \ 95\% Confidence Interval}&   \multicolumn{1}{c}{(-0.60, 1.96)}&   \multicolumn{1}{c}{(-0.41, 1.63)}&   \multicolumn{1}{c}{(-1.15, 2.88)}\\
+\\[-2ex]
+\multicolumn{1}{l}{\ \ \ \ \ Pre-Intervention Average}&   \multicolumn{3}{c}{0.46}\\
+\\[-.1ex]
+\hline\hline
+\\[-2ex]
+\multicolumn{4}{p{.75\linewidth}}{\footnotesize \textit{Notes}: This table reports the average estimated effect, $\hat{\tau}$ from equation (\ref{eq:ave_effect_deltas}), of dropping NH-CON regulations on the quantity of specialized nursing home beds per 100,000 in PA, IN, and ND using the DID, SC, and SDID estimators. Also reported are standard errors and 95\% confidence intervals using the placebo variance estimation approach outlined in Section \ref{sdid_inference}. Significance levels are reported as *** = p$<$0.01, ** = p$<$0.05, * = p$<$0.1. The baseline average quantity of specialized nursing home beds per 100,000 for each treated state is also provided. Data source: 1991-2014 Centers for Medicare and Medicaid Services’ (CMS) Provider of Services files.}
+\end{tabular}
+\end{table}
+\vfill
+\clearpage
+
+
+
+\end{document}
